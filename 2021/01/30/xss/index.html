@@ -7,12 +7,12 @@
   
   <title>存储xss挖掘经验 | 魔域魂窟</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#存储xss挖掘经验 结合这几天挖掘的src xss稍微总结一下存储xss的挖掘经验 出现位置#一般都是有框就X 例如站内信功能 评论功能等个人喜欢先填写一个看看解析不解析img标签 或者实体编码 进行判断xss的存在，有些厂商一般不会ban img a这种标签，只会ban alert，或者onclick,onload,onerror这种事件属性， 有些地方会进行一个前台校验输入是否合法 但是后端">
+  <meta name="description" content="#存储xss挖掘经验 结合这几天挖掘的src xss稍微总结一下存储xss的挖掘经验 出现位置#一般都是有框就X 例如站内信功能 评论功能等个人喜欢先填写一个&lt;img src&#x3D;1&gt;看看解析不解析img标签 或者实体编码 进行判断xss的存在，有些厂商一般不会ban img a这种标签，只会ban alert，或者onclick,onload,onerror这种事件属性， 有些地方会进行">
 <meta property="og:type" content="article">
 <meta property="og:title" content="存储xss挖掘经验">
 <meta property="og:url" content="http://example.com/2021/01/30/xss/index.html">
 <meta property="og:site_name" content="魔域魂窟">
-<meta property="og:description" content="#存储xss挖掘经验 结合这几天挖掘的src xss稍微总结一下存储xss的挖掘经验 出现位置#一般都是有框就X 例如站内信功能 评论功能等个人喜欢先填写一个看看解析不解析img标签 或者实体编码 进行判断xss的存在，有些厂商一般不会ban img a这种标签，只会ban alert，或者onclick,onload,onerror这种事件属性， 有些地方会进行一个前台校验输入是否合法 但是后端">
+<meta property="og:description" content="#存储xss挖掘经验 结合这几天挖掘的src xss稍微总结一下存储xss的挖掘经验 出现位置#一般都是有框就X 例如站内信功能 评论功能等个人喜欢先填写一个&lt;img src&#x3D;1&gt;看看解析不解析img标签 或者实体编码 进行判断xss的存在，有些厂商一般不会ban img a这种标签，只会ban alert，或者onclick,onload,onerror这种事件属性， 有些地方会进行">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://ma4ter.cn/usr/uploads/2021/01/2365273605.png">
 <meta property="og:image" content="https://ma4ter.cn/usr/uploads/2021/01/1231273237.png">
@@ -23,7 +23,7 @@
 <meta property="og:image" content="https://ma4ter.cn/usr/uploads/2021/01/843987087.png">
 <meta property="og:image" content="https://ma4ter.cn/usr/uploads/2021/01/2034371477.png">
 <meta property="article:published_time" content="2021-01-30T08:58:23.000Z">
-<meta property="article:modified_time" content="2021-01-30T08:58:40.255Z">
+<meta property="article:modified_time" content="2021-01-30T09:04:50.302Z">
 <meta property="article:author" content="魂笛">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://ma4ter.cn/usr/uploads/2021/01/2365273605.png">
@@ -99,7 +99,7 @@
       
         <p>#存储xss挖掘经验</p>
 <p>结合这几天挖掘的src xss稍微总结一下存储xss的挖掘经验</p>
-<p>出现位置#<br>一般都是有框就X 例如站内信功能 评论功能等个人喜欢先填写一个<img src=1>看看解析不解析img标签 或者实体编码 进行判断xss的存在，有些厂商一般不会ban img a这种标签，只会ban alert，或者onclick,onload,onerror这种事件属性，</p>
+<p>出现位置#<br>一般都是有框就X 例如站内信功能 评论功能等个人喜欢先填写一个<code>&lt;img src=1&gt;</code>看看解析不解析img标签 或者实体编码 进行判断xss的存在，有些厂商一般不会ban img a这种标签，只会ban alert，或者onclick,onload,onerror这种事件属性，</p>
 <p>有些地方会进行一个前台校验输入是否合法 但是后端没有进行判断，例如下图</p>
 <p><img src="https://ma4ter.cn/usr/uploads/2021/01/2365273605.png" alt="enter image description here"></p>
 <p><img src="https://ma4ter.cn/usr/uploads/2021/01/1231273237.png" alt="enter image description here"></p>
@@ -128,7 +128,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/01/30/xss/" data-id="ckkjhhjl10005x2cp9dbufiu4" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/01/30/xss/" data-id="ckkjhs0l5000641cp7v512fcy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -136,6 +136,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2021/01/30/foha/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          foha批量查询脚本
+        
+      </div>
+    </a>
   
   
     <a href="/2021/01/30/win10%E8%93%9D%E5%B1%8Fbug/" id="article-nav-older" class="article-nav-link-wrap">
@@ -177,6 +186,10 @@
       <ul>
         
           <li>
+            <a href="/2021/01/30/foha/">foha批量查询脚本</a>
+          </li>
+        
+          <li>
             <a href="/2021/01/30/xss/">存储xss挖掘经验</a>
           </li>
         
@@ -190,10 +203,6 @@
         
           <li>
             <a href="/2020/11/17/httpsms/">httpsms</a>
-          </li>
-        
-          <li>
-            <a href="/2020/11/17/cms/">cms</a>
           </li>
         
       </ul>

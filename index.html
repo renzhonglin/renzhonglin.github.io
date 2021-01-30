@@ -66,6 +66,47 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-foha" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/01/30/foha/" class="article-date">
+  <time datetime="2021-01-30T09:05:49.000Z" itemprop="datePublished">2021-01-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/30/foha/">foha批量查询脚本</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#分享一下fofa的批量查询脚本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><code class="hljs plain">#!&#x2F;usr&#x2F;bin&#x2F;python3<br># -*- coding: utf-8 -*-<br># Author  : 诚默<br><br>import base64<br>import json<br>import time<br>import pandas as pd<br>import requests<br>fofa_mail &#x3D; &#39;&#39;#通过fofa个人资料中获取<br>fofa_key &#x3D; &#39;&#39;#<br>fofa_list &#x3D; [&#39;title&#39;, &#39;header&#39;, &#39;body&#39;, &#39;domain&#39;, &#39;icon_hash&#39;, &#39;host&#39;, &#39;port&#39;, &#39;ip&#39;, &#39;status_code&#39;, &#39;protocol&#39;, &#39;city&#39;,<br>             &#39;region&#39;, &#39;country&#39;, &#39;cert&#39;, &#39;banner&#39;, &#39;typ&#39;, &#39;os&#39;, &#39;server&#39;, &#39;app&#39;, &#39;after&#39;, &#39;asn&#39;, &#39;org&#39;,<br>             &#39;base_protocol&#39;,<br>             &#39;is_ipv6&#39;, &#39;is_domain&#39;, &#39;ip_ports&#39;, &#39;port_size&#39;, &#39;port_size_gt&#39;, &#39;port_size_lt&#39;, &#39;ip_country&#39;, &#39;ip_region&#39;,<br>             &#39;ip_city&#39;, &#39;ip_after&#39;, &#39;ip_before&#39;<br>             ]<br><br>def fofaapi(select):  # 进行调用<br>    page &#x3D; 1  # 爬取几页数据，size为每页个数<br>    size &#x3D; 10  # 高级会员最大爬取前10000个<br>    fields &#x3D; &quot;host,ip,port,title,country_name&quot;  # 返回的数据列<br>    full &#x3D; &#39;false&#39;  # 显示所有的数据，false显示当年的<br>    base64_str &#x3D; base64.b64encode(select.encode(&quot;utf-8&quot;)).decode(&#39;utf-8&#39;)<br>    api_url &#x3D; &#39;https:&#x2F;&#x2F;fofa.so&#x2F;api&#x2F;v1&#x2F;search&#x2F;all?email&#x3D;&#39; + fofa_mail + &#39;&amp;key&#x3D;&#39; + fofa_key + &#39;&amp;qbase64&#x3D;&#39; + base64_str + &#39;&amp;fields&#x3D;&#39; + fields + &#39;&amp;size&#x3D;&#39; + str(<br>        size) + &#39;&amp;page&#x3D;&#39; + str(page) + &#39;&amp;full&#x3D;&#39; + full<br>    r &#x3D; requests.get(api_url)  # 提交请求<br>    text &#x3D; json.loads(r.text.encode(&#39;gbk&#39;, &#39;ignore&#39;).decode(&#39;gbk&#39;))  # 获得dict数据<br>    print(text)<br><br>    # 后续为写入表<br>    columns &#x3D; fields.split(&#39;,&#39;)  # 数据列名<br>    excel_list &#x3D; text[&#39;results&#39;]<br>    excel_list.insert(0, [&quot;查询语句：&quot; + str(select) + &quot; 页数：&quot; + str(page) + &quot; 每页：&quot; + str(size)])  # 写入初始的查询语句<br>    dt &#x3D; pd.DataFrame(excel_list, columns&#x3D;columns)<br>    file &#x3D; &#39;fofa&#39; + time.strftime(&#39;%Y%m%d%H%M%S&#39;, time.localtime(time.time()))  # 文件名为fofa+时间<br>    dt.to_excel(file + &quot;.xlsx&quot;, index&#x3D;1, engine&#x3D;&#39;xlsxwriter&#39;)<br>    #return text<br><br>def getselect(str):#格式化<br>    select &#x3D; &quot;&quot;<br>    comma_list &#x3D; str.split(&#39;,&#39;)  # 以逗号分组 （ip&#x3D;1.1.1.1 | domain&#x3D;baidu.com）<br>    for item in comma_list:<br>        equal_list &#x3D; item.split(&#39;&#x3D;&#39;)  # 等号分组 ip | 1.1.1.1<br>        if equal_list[0] in fofa_list:  # 属性存在，等号合规<br>            select +&#x3D; item + &quot; &amp;&amp; &quot;<br>        else:<br>            return False<br>    return select.rstrip(&#39; &amp;&amp; &#39;)  # 去除多余符号<br><br>def main():<br>    str &#x3D; &quot;domain&#x3D;baidu.com&quot;<br>    str1 &#x3D; &quot;ip&#x3D;61.135.186.217,domain&#x3D;baidu.com&quot;<br><br>    if getselect(str1) !&#x3D; False:  # 进行数据处理，数据合规就进行下一步操作<br>        fofaapi(getselect(str1))<br><br>if __name__ &#x3D;&#x3D; &#39;__main__&#39;:<br>    main()<br></code></pre></td></tr></table></figure>
+
+<p>文件结果如下，可根据需求改动</p>
+<p><img src="https://secquan.zzyuncheng.com/0af6daa12bfe973d7c6d797eadc02bb3.png-quanzi" alt="enter image description here"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/30/foha/" data-id="ckkjhs0km000341cpgo7oct5d" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-xss" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/01/30/xss/" class="article-date">
@@ -90,7 +131,7 @@
       
         <p>#存储xss挖掘经验</p>
 <p>结合这几天挖掘的src xss稍微总结一下存储xss的挖掘经验</p>
-<p>出现位置#<br>一般都是有框就X 例如站内信功能 评论功能等个人喜欢先填写一个<img src=1>看看解析不解析img标签 或者实体编码 进行判断xss的存在，有些厂商一般不会ban img a这种标签，只会ban alert，或者onclick,onload,onerror这种事件属性，</p>
+<p>出现位置#<br>一般都是有框就X 例如站内信功能 评论功能等个人喜欢先填写一个<code>&lt;img src=1&gt;</code>看看解析不解析img标签 或者实体编码 进行判断xss的存在，有些厂商一般不会ban img a这种标签，只会ban alert，或者onclick,onload,onerror这种事件属性，</p>
 <p>有些地方会进行一个前台校验输入是否合法 但是后端没有进行判断，例如下图</p>
 <p><img src="https://ma4ter.cn/usr/uploads/2021/01/2365273605.png" alt="enter image description here"></p>
 <p><img src="https://ma4ter.cn/usr/uploads/2021/01/1231273237.png" alt="enter image description here"></p>
@@ -119,7 +160,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/01/30/xss/" data-id="ckkjhhjl10005x2cp9dbufiu4" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/01/30/xss/" data-id="ckkjhs0l5000641cp7v512fcy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -173,7 +214,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/01/30/win10%E8%93%9D%E5%B1%8Fbug/" data-id="ckkjhhjkz0004x2cpb2d130w0" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/01/30/win10%E8%93%9D%E5%B1%8Fbug/" data-id="ckkjhs0l0000541cpa1nz2rwj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -232,7 +273,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/11/17/CVE-2020-1380%E7%AD%BE%E5%90%8D%E4%BC%AA%E9%80%A0/" data-id="ckkjhhjkb0000x2cp1tyn4tuf" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/11/17/CVE-2020-1380%E7%AD%BE%E5%90%8D%E4%BC%AA%E9%80%A0/" data-id="ckkjhs0jx000041cpa800b47a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -282,7 +323,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/11/17/httpsms/" data-id="ckkjhhjkp0001x2cp3su10b9z" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/11/17/httpsms/" data-id="ckkjhs0kt000441cpefbghc8i" class="article-share-link">Share</a>
       
       
     </footer>
@@ -320,7 +361,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/11/17/cms/" data-id="ckkjhhjkw0003x2cp55xw4k0t" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/11/17/cms/" data-id="ckkjhs0kj000241cpcw03gg75" class="article-share-link">Share</a>
       
       
     </footer>
@@ -358,7 +399,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/11/17/about/" data-id="ckkjhhjku0002x2cp83njamg2" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/11/17/about/" data-id="ckkjhs0kf000141cpaicv9ai2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -399,6 +440,10 @@
       <ul>
         
           <li>
+            <a href="/2021/01/30/foha/">foha批量查询脚本</a>
+          </li>
+        
+          <li>
             <a href="/2021/01/30/xss/">存储xss挖掘经验</a>
           </li>
         
@@ -412,10 +457,6 @@
         
           <li>
             <a href="/2020/11/17/httpsms/">httpsms</a>
-          </li>
-        
-          <li>
-            <a href="/2020/11/17/cms/">cms</a>
           </li>
         
       </ul>
