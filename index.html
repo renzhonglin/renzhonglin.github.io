@@ -93,11 +93,29 @@
 
 <p>文件结果如下，可根据需求改动</p>
 <p><img src="https://secquan.zzyuncheng.com/0af6daa12bfe973d7c6d797eadc02bb3.png-quanzi" alt="enter image description here"></p>
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script >
+var gitalk = new Gitalk({
+  clientID: 'a5bfaa7fddf1c19628f6',
+  clientSecret: '6a1973c92b65bf565b673300ed94c1d07b827727',
+  repo: 'renzhonglin.github.io',
+  owner: 'renzhonglin',
+  admin: 'renzhonglin',
+  id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+  distractionFreeMode: false  // Facebook-like distraction free mode
+})
+gitalk.render('gitalk-container')
+</script>
+
+
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/01/30/foha/" data-id="cklz6vmgn0003yucp78ifhvtu" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/01/30/foha/" data-id="cklz74qs500042tcp1irmfm0q" class="article-share-link">Share</a>
       
       
     </footer>
@@ -156,11 +174,27 @@
 <p>例如 我一般喜欢用两个账号测试xss 一个账号发布 然后另一个账号测试 在评论处输入payload<br><img src="https://ma4ter.cn/usr/uploads/2021/01/843987087.png" alt="enter image description here"><br>是没什么反应的 但是当我进入发布者的后台时候发现弹窗了<br><img src="https://ma4ter.cn/usr/uploads/2021/01/2034371477.png" alt="enter image description here"><br>这样一个存储xss也就到手了</p>
 <p>总之就是多去测试 尽量寻找可能触发payload的地方 遇到实体编码的地方就可以去寻找其他一些可能触发payload的位置</p>
 <p>[转]</p>
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script >
+var gitalk = new Gitalk({
+  clientID: 'a5bfaa7fddf1c19628f6',
+  clientSecret: '6a1973c92b65bf565b673300ed94c1d07b827727',
+  repo: 'renzhonglin.github.io',
+  owner: 'renzhonglin',
+  admin: 'renzhonglin',
+  id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+  distractionFreeMode: false  // Facebook-like distraction free mode
+})
+gitalk.render('gitalk-container')
+</script>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/01/30/xss/" data-id="cklz6vmgq0006yucp9h742zwc" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/01/30/xss/" data-id="cklz74qs700062tcp1he0085o" class="article-share-link">Share</a>
       
       
     </footer>
@@ -210,11 +244,29 @@
 <p><img src="https://secquan.zzyuncheng.com/aca24da60da6bec2e6a1c31834ddf81e.png-quanzi" alt="enter image description here"></p>
 <p>运行生成的exe文件，成功蓝屏：<br><img src="https://secquan.zzyuncheng.com/9f91f10add04ef39b149d1d65fc32521.png-quanzi" alt="enter image description here"><br>好像没看到可以利用此漏洞来远程执行代码的，希望win10早点修复这个bug呗。</p>
 <p>参考链接：<a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-1354077-1-1.html">https://www.52pojie.cn/thread-1354077-1-1.html</a></p>
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script >
+var gitalk = new Gitalk({
+  clientID: 'a5bfaa7fddf1c19628f6',
+  clientSecret: '6a1973c92b65bf565b673300ed94c1d07b827727',
+  repo: 'renzhonglin.github.io',
+  owner: 'renzhonglin',
+  admin: 'renzhonglin',
+  id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+  distractionFreeMode: false  // Facebook-like distraction free mode
+})
+gitalk.render('gitalk-container')
+</script>
+
+
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/01/30/win10%E8%93%9D%E5%B1%8Fbug/" data-id="cklz6vmgp0005yucp4h591zqu" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/01/30/win10%E8%93%9D%E5%B1%8Fbug/" data-id="cklz74qs600052tcpeufj84sz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -269,11 +321,27 @@
 <p>导致该漏洞的原因为当 Windows 读取 MSI 文件时，它会从文件开头开始读取，一直到有效的 MSI 签名末尾结束并舍弃其它部分。因此在检测到合法的 MSI 文件结构后，它会忽略被附加的数据，而不管它是什么。而JAR 文件只不过是 ZIP 文件，并且在执行时由 Java 运行时从文件末尾开始读取，直到检测到有效 ZIP 文件结构的开头为止，然后它将丢弃文件的其余部分。这最后将造成indows 开始从开头读取而 JAVA 从末尾读取时,windows认为其是一个签名文件，而java文件也可以正常运行。</p>
 <p>现windows已更新了相关补丁，主要为msisip.dll该文件，加入了NeedFileSizeVerification和VerifyFileSize两个逻辑，更新系统即可防止该类攻击。</p>
 <p>参考文章：<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/smellycat000/article/details/108091187">https://blog.csdn.net/smellycat000/article/details/108091187</a><br><a target="_blank" rel="noopener" href="https://www.secrss.com/articles/24763">https://www.secrss.com/articles/24763</a><br><a target="_blank" rel="noopener" href="https://www.securityinbits.com/malware-analysis/interesting-tactic-by-ratty-adwind-distribution-of-jar-appended-to-signed-msi/">https://www.securityinbits.com/malware-analysis/interesting-tactic-by-ratty-adwind-distribution-of-jar-appended-to-signed-msi/</a><br><a target="_blank" rel="noopener" href="https://www.chainnews.com/zh-hant/articles/041869869233.htm">https://www.chainnews.com/zh-hant/articles/041869869233.htm</a><br><a target="_blank" rel="noopener" href="https://wwws.nightwatchcybersecurity.com/2019/01/16/thoughts-on-the-msi-jar-authenticode-bypass/">https://wwws.nightwatchcybersecurity.com/2019/01/16/thoughts-on-the-msi-jar-authenticode-bypass/</a></p>
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script >
+var gitalk = new Gitalk({
+  clientID: 'a5bfaa7fddf1c19628f6',
+  clientSecret: '6a1973c92b65bf565b673300ed94c1d07b827727',
+  repo: 'renzhonglin.github.io',
+  owner: 'renzhonglin',
+  admin: 'renzhonglin',
+  id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+  distractionFreeMode: false  // Facebook-like distraction free mode
+})
+gitalk.render('gitalk-container')
+</script>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/11/17/CVE-2020-1380%E7%AD%BE%E5%90%8D%E4%BC%AA%E9%80%A0/" data-id="cklz6vmgh0000yucp99ym4q5q" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/11/17/CVE-2020-1380%E7%AD%BE%E5%90%8D%E4%BC%AA%E9%80%A0/" data-id="cklz74qry00002tcp2bx512d4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -319,11 +387,27 @@
 <p>360杀毒，安全卫士无反应。</p>
 <p>全自动工具：<a target="_blank" rel="noopener" href="https://github.com/r00t-3xp10it/Meterpreter_Paranoid_Mode-SSL">https://github.com/r00t-3xp10it/Meterpreter_Paranoid_Mode-SSL</a></p>
 <p>参考：<a target="_blank" rel="noopener" href="https://pentestlab.blog/category/defense-evasion/">https://pentestlab.blog/category/defense-evasion/</a></p>
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script >
+var gitalk = new Gitalk({
+  clientID: 'a5bfaa7fddf1c19628f6',
+  clientSecret: '6a1973c92b65bf565b673300ed94c1d07b827727',
+  repo: 'renzhonglin.github.io',
+  owner: 'renzhonglin',
+  admin: 'renzhonglin',
+  id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+  distractionFreeMode: false  // Facebook-like distraction free mode
+})
+gitalk.render('gitalk-container')
+</script>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/11/17/httpsms/" data-id="cklz6vmgo0004yucpcxozfcmn" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/11/17/httpsms/" data-id="cklz74qs400032tcp5t0kb91y" class="article-share-link">Share</a>
       
       
     </footer>
@@ -357,11 +441,27 @@
       
         <p>#cms后台登录绕过<br>@miko</p>
 <p>1.随便打开一个index.php，然后发送post请求，创建seions.<br><img src="https://raw.githubusercontent.com/renzhonglin/image/master/3.png" alt="enter image description here"><br>POST:_SESSION[login_in]=1&amp;_SESSION[admin]=1&amp;_SESSION[login_time]=99999999999此时就成功地创建了SESION变量.<br>2.创建完成后，登录后台.<br><img src="https://raw.githubusercontent.com/renzhonglin/image/master/1.png" alt="enter image description here"><br>3.成功！<br><img src="https://raw.githubusercontent.com/renzhonglin/image/master/2.png" alt="enter image description here"></p>
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script >
+var gitalk = new Gitalk({
+  clientID: 'a5bfaa7fddf1c19628f6',
+  clientSecret: '6a1973c92b65bf565b673300ed94c1d07b827727',
+  repo: 'renzhonglin.github.io',
+  owner: 'renzhonglin',
+  admin: 'renzhonglin',
+  id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+  distractionFreeMode: false  // Facebook-like distraction free mode
+})
+gitalk.render('gitalk-container')
+</script>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/11/17/cms%E6%BC%8F%E6%B4%9E/" data-id="cklz6vmgm0002yucpabwk7a7u" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/11/17/cms%E6%BC%8F%E6%B4%9E/" data-id="cklz74qs400022tcp0nsk3l2a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -395,11 +495,27 @@
       
         <p>#I’m miko<br>魔域魂窟是我的github博客.<br><img src="https://secquan.zzyuncheng.com/ab80394d021ac09a10e5bedf050c51c2.jpg-avatar" alt="enter image description here"></p>
 <p>你可以在这里学到东西.</p>
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script >
+var gitalk = new Gitalk({
+  clientID: 'a5bfaa7fddf1c19628f6',
+  clientSecret: '6a1973c92b65bf565b673300ed94c1d07b827727',
+  repo: 'renzhonglin.github.io',
+  owner: 'renzhonglin',
+  admin: 'renzhonglin',
+  id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+  distractionFreeMode: false  // Facebook-like distraction free mode
+})
+gitalk.render('gitalk-container')
+</script>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/11/17/about/" data-id="cklz6vmgl0001yucp40aw3od4" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/11/17/about/" data-id="cklz74qs200012tcp8ajy6xv2" class="article-share-link">Share</a>
       
       
     </footer>

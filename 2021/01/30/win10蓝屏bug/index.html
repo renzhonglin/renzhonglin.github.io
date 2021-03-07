@@ -18,7 +18,7 @@
 <meta property="og:image" content="https://secquan.zzyuncheng.com/aca24da60da6bec2e6a1c31834ddf81e.png-quanzi">
 <meta property="og:image" content="https://secquan.zzyuncheng.com/9f91f10add04ef39b149d1d65fc32521.png-quanzi">
 <meta property="article:published_time" content="2021-01-30T08:14:21.000Z">
-<meta property="article:modified_time" content="2021-01-30T08:45:48.903Z">
+<meta property="article:modified_time" content="2021-03-07T13:32:42.879Z">
 <meta property="article:author" content="魂笛">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://secquan.zzyuncheng.com/e028b8d1549111d870b8c570c002ca18.png-quanzi">
@@ -110,11 +110,29 @@
 <p><img src="https://secquan.zzyuncheng.com/aca24da60da6bec2e6a1c31834ddf81e.png-quanzi" alt="enter image description here"></p>
 <p>运行生成的exe文件，成功蓝屏：<br><img src="https://secquan.zzyuncheng.com/9f91f10add04ef39b149d1d65fc32521.png-quanzi" alt="enter image description here"><br>好像没看到可以利用此漏洞来远程执行代码的，希望win10早点修复这个bug呗。</p>
 <p>参考链接：<a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-1354077-1-1.html">https://www.52pojie.cn/thread-1354077-1-1.html</a></p>
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script >
+var gitalk = new Gitalk({
+  clientID: 'a5bfaa7fddf1c19628f6',
+  clientSecret: '6a1973c92b65bf565b673300ed94c1d07b827727',
+  repo: 'renzhonglin.github.io',
+  owner: 'renzhonglin',
+  admin: 'renzhonglin',
+  id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+  distractionFreeMode: false  // Facebook-like distraction free mode
+})
+gitalk.render('gitalk-container')
+</script>
+
+
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/01/30/win10%E8%93%9D%E5%B1%8Fbug/" data-id="cklz6vmgp0005yucp4h591zqu" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/01/30/win10%E8%93%9D%E5%B1%8Fbug/" data-id="cklz74qs600052tcpeufj84sz" class="article-share-link">Share</a>
       
       
     </footer>
