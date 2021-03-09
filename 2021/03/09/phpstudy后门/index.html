@@ -5,22 +5,28 @@
   
 
   
-  <title>CVE-2021-21972 | 魔域魂窟</title>
+  <title>phpstudy后门 | 魔域魂窟</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#CVE-2021-21972 Vmware vCenter 图形化POC批量扫描工具#工具界面：  （直接把.txt文件拖入进去就可以。。。）###下载地址：https:&#x2F;&#x2F;github.com&#x2F;admin360bug&#x2F;GUI-POC-EXP&#x2F;####关于EXP：已编译完成，脱离python环境可用的工具      var gitalk &#x3D; new Gitalk({   clientID: &#39;a">
+  <meta name="description" content="#phpstudy后门利用创建靶机使用burp抓取数据包            var gitalk &#x3D; new Gitalk({   clientID: &#39;a5bfaa7fddf1c19628f6&#39;,   clientSecret: &#39;6a1973c92b65bf565b673300ed94c1d07b827727&#39;,   repo: &#39;renzhonglin.github.io&#39;,   own">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CVE-2021-21972">
-<meta property="og:url" content="http://bo.vuvhz.top/2021/03/07/CVE-2021-21972/index.html">
+<meta property="og:title" content="phpstudy后门">
+<meta property="og:url" content="http://bo.vuvhz.top/2021/03/09/phpstudy%E5%90%8E%E9%97%A8/index.html">
 <meta property="og:site_name" content="魔域魂窟">
-<meta property="og:description" content="#CVE-2021-21972 Vmware vCenter 图形化POC批量扫描工具#工具界面：  （直接把.txt文件拖入进去就可以。。。）###下载地址：https:&#x2F;&#x2F;github.com&#x2F;admin360bug&#x2F;GUI-POC-EXP&#x2F;####关于EXP：已编译完成，脱离python环境可用的工具      var gitalk &#x3D; new Gitalk({   clientID: &#39;a">
+<meta property="og:description" content="#phpstudy后门利用创建靶机使用burp抓取数据包            var gitalk &#x3D; new Gitalk({   clientID: &#39;a5bfaa7fddf1c19628f6&#39;,   clientSecret: &#39;6a1973c92b65bf565b673300ed94c1d07b827727&#39;,   repo: &#39;renzhonglin.github.io&#39;,   own">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://secquan.zzyuncheng.com/372e9c3767d8cdd422e9b022dc40d5d3.png-quanzi">
-<meta property="og:image" content="https://secquan.zzyuncheng.com/67a5e99feb59ada76a80e353786c75b8.png-quanzi">
-<meta property="article:published_time" content="2021-03-07T13:56:13.000Z">
-<meta property="article:modified_time" content="2021-03-09T10:59:19.844Z">
+<meta property="og:image" content="https://github.com/renzhonglin/image/blob/master/phpstus/1.png?raw=true">
+<meta property="og:image" content="https://github.com/renzhonglin/image/blob/master/phpstus/2.png?raw=true">
+<meta property="og:image" content="https://github.com/renzhonglin/image/blob/master/phpstus/3.png?raw=true">
+<meta property="og:image" content="https://github.com/renzhonglin/image/blob/master/phpstus/4.png?raw=true">
+<meta property="og:image" content="https://github.com/renzhonglin/image/blob/master/phpstus/5.png?raw=true">
+<meta property="og:image" content="https://github.com/renzhonglin/image/blob/master/phpstus/6.png?raw=true">
+<meta property="og:image" content="https://github.com/renzhonglin/image/blob/master/phpstus/7.png?raw=true">
+<meta property="og:image" content="https://github.com/renzhonglin/image/blob/master/phpstus/8.png?raw=true">
+<meta property="article:published_time" content="2021-03-09T10:57:47.000Z">
+<meta property="article:modified_time" content="2021-03-09T11:23:09.348Z">
 <meta property="article:author" content="魂笛">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://secquan.zzyuncheng.com/372e9c3767d8cdd422e9b022dc40d5d3.png-quanzi">
+<meta name="twitter:image" content="https://github.com/renzhonglin/image/blob/master/phpstus/1.png?raw=true">
   
     <link rel="alternate" href="/atom.xml" title="魔域魂窟" type="application/atom+xml">
   
@@ -69,10 +75,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-CVE-2021-21972" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-phpstudy后门" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2021/03/07/CVE-2021-21972/" class="article-date">
-  <time datetime="2021-03-07T13:56:13.000Z" itemprop="datePublished">2021-03-07</time>
+    <a href="/2021/03/09/phpstudy%E5%90%8E%E9%97%A8/" class="article-date">
+  <time datetime="2021-03-09T10:57:47.000Z" itemprop="datePublished">2021-03-09</time>
 </a>
     
   </div>
@@ -83,7 +89,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      CVE-2021-21972
+      phpstudy后门
     </h1>
   
 
@@ -91,9 +97,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#CVE-2021-21972 Vmware vCenter 图形化POC批量扫描工具<br>#工具界面：</p>
-<p><img src="https://secquan.zzyuncheng.com/372e9c3767d8cdd422e9b022dc40d5d3.png-quanzi" alt="enter image description here"></p>
-<p>（直接把.txt文件拖入进去就可以。。。）<br>###下载地址：<br><a target="_blank" rel="noopener" href="https://github.com/admin360bug/GUI-POC-EXP/#">https://github.com/admin360bug/GUI-POC-EXP/#</a><br>###关于EXP：<br>已编译完成，脱离python环境可用的工具<br><img src="https://secquan.zzyuncheng.com/67a5e99feb59ada76a80e353786c75b8.png-quanzi" alt="enter image description here"></p>
+        <p>#phpstudy后门利用<br>创建靶机<br><img src="https://github.com/renzhonglin/image/blob/master/phpstus/1.png?raw=true" alt="enter image description here"><br>使用burp抓取数据包<br><img src="https://github.com/renzhonglin/image/blob/master/phpstus/2.png?raw=true" alt="enter image description here"></p>
+<p><img src="https://github.com/renzhonglin/image/blob/master/phpstus/3.png?raw=true" alt="enter image description here"></p>
+<p><img src="https://github.com/renzhonglin/image/blob/master/phpstus/4.png?raw=true" alt="enter image description here"></p>
+<p><img src="https://github.com/renzhonglin/image/blob/master/phpstus/5.png?raw=true" alt="enter image description here"></p>
+<p><img src="https://github.com/renzhonglin/image/blob/master/phpstus/6.png?raw=true" alt="enter image description here"></p>
+<p><img src="https://github.com/renzhonglin/image/blob/master/phpstus/7.png?raw=true" alt="enter image description here"></p>
+<p><img src="https://github.com/renzhonglin/image/blob/master/phpstus/8.png?raw=true" alt="enter image description here"></p>
 <div id="gitalk-container"></div>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
@@ -111,10 +121,11 @@ var gitalk = new Gitalk({
 gitalk.render('gitalk-container')
 </script>
 
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bo.vuvhz.top/2021/03/07/CVE-2021-21972/" data-id="ckm1xdls10002h6cpckk99uwx" class="article-share-link">Share</a>
+      <a data-url="http://bo.vuvhz.top/2021/03/09/phpstudy%E5%90%8E%E9%97%A8/" data-id="ckm1xdls40007h6cp4fx512ll" class="article-share-link">Share</a>
       
       
     </footer>
@@ -123,19 +134,10 @@ gitalk.render('gitalk-container')
     
 <nav id="article-nav">
   
-    <a href="/2021/03/07/%E9%A9%BE%E6%A0%A1%E9%80%9A%E7%BD%91%E7%B3%BB%E7%BB%9F%E6%BC%8F%E6%B4%9E/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          驾校通网上约车系统漏洞分享
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/03/07/%E9%80%9A%E8%BE%BEOA%E7%99%BB%E5%BD%95%E6%BC%8F%E6%B4%9E/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2021/03/09/%E9%94%90%E6%8D%B7RG-UAC/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">通达OAv11.7在线用户登录漏洞</div>
+      <div class="article-nav-title">锐捷RG-UAC</div>
     </a>
   
 </nav>

