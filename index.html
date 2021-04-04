@@ -66,6 +66,88 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-智慧教育越权" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/04/04/%E6%99%BA%E6%85%A7%E6%95%99%E8%82%B2%E8%B6%8A%E6%9D%83/" class="article-date">
+  <time datetime="2021-04-04T03:32:18.000Z" itemprop="datePublished">2021-04-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/04/%E6%99%BA%E6%85%A7%E6%95%99%E8%82%B2%E8%B6%8A%E6%9D%83/">智慧教育越权</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>智慧教育平台越权上传漏洞通杀拿webshell</p>
+<p>1.fofa语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">&#x2F;Widget&#x2F;common&#x2F;Service&#x2F;CommonWidgetService.asmx&#x2F;Categorylist<br></code></pre></td></tr></table></figure>
+<p><img src="https://secquan.zzyuncheng.com/b45dd4d400209c3638d122a1689664f2.png-quanzi" alt="enter image description here"></p>
+<p>2.漏洞越权位置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">&#x2F;SmartMobile&#x2F;MobileIndex.aspx?uname&#x3D;admin&amp;orgId&#x3D;0<br></code></pre></td></tr></table></figure>
+<p><img src="https://secquan.zzyuncheng.com/8c7fa5ccba628d2570e8967bc7d80dba.png-quanzi" alt="enter image description here"></p>
+<p>有的会提示输入账号密码，直接访问这个注册，就可以注册</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">Module&#x2F;SSO&#x2F;SJS_Register.aspx<br></code></pre></td></tr></table></figure>
+<p><img src="https://secquan.zzyuncheng.com/e79bc1f66d00183ce7d0cc1cc2b1d7b4.png-quanzi" alt="enter image description here"></p>
+<p>可以登录个人后台，<br><img src="https://secquan.zzyuncheng.com/cbbd3f0ee65ee9a3226ab45affe5dc85.png-quanzi" alt="enter image description here"></p>
+<p>3.登录后可以重普通用户越权到admin管理员用户</p>
+<p><img src="https://secquan.zzyuncheng.com/3f9876afdcb5edb7135b1643caac6eee.png-quanzi" alt="enter image description here"></p>
+<p>4.在个人页面抓包可以发现以get方式传输</p>
+<p><img src="https://secquan.zzyuncheng.com/aaf09447458aac4aee6897ea5c551823.png-quanzi" alt="enter image description here"></p>
+<p>试试有没有注入或者越权<br>就加个?id=123 ?user=miko<br>没有注入。。。。<br><img src="https://secquan.zzyuncheng.com/e4a0ed950e504bdeb458aba712df1e77.png-quanzi" alt="enter image description here"></p>
+<p>当把user换成admin时<br><img src="https://secquan.zzyuncheng.com/e41500af37b81850f9e187d0f58730b5.png-quanzi" alt="enter image description here"></p>
+<p>既然到了admin里面，这里应该有admin的cookie吧，于是直接又登录之前的越权漏洞地址，应该能到管理员后台</p>
+<p><img src="https://secquan.zzyuncheng.com/02b4709358740638d7f61379beaa94f6.png-quanzi" alt="enter image description here"></p>
+<p>5.成功了</p>
+<p><img src="https://secquan.zzyuncheng.com/275c8a049b4679c09d3e4c6d58f94594.png-quanzi" alt="enter image description here"></p>
+<p>6.找上传点<br>改filetype标签不行，加了个aspx，改了个aspx，还是不行，于是直接抓包，掏出burp<br><img src="https://secquan.zzyuncheng.com/067aed2d1c34bd797c34f17868d97bb9.png-quanzi" alt="enter image description here"></p>
+<p>7.传不了，图片可以传，但是aspx传的时候进度条不动，。。。。卡住了，于是做图片马<br>aspx加图片，哦呦，进去了，但是访问后报错<br><img src="https://secquan.zzyuncheng.com/ad709190630ab7761dfb1207a2721a99.png-quanzi" alt="enter image description here"></p>
+<p>于是找大佬问问，大佬也试了一下，大佬用的asp加图片，于是我也改asp加图片<br>嘿嘿</p>
+<p>8.成功拿下webshell</p>
+<p><img src="https://secquan.zzyuncheng.com/dd81b6f32ec5a748bb3ddbb2ae9f207f.png-quanzi" alt="enter image description here"></p>
+<p>目前发现这套模板可以写个批量拿站脚本，日收益会很不错，有些这个模板已经修复了，但是查找的高达90%都有这些漏洞。</p>
+<p>漏洞复现 | （通用0day）好视通视频会议平台存在任意文件下载漏洞</p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=Mzg5NjU3NzE3OQ==&amp;mid=2247484986&amp;idx=1&amp;sn=55c43e01fb9cce6962272045c263fd83&amp;chksm=c07fbdcef70834d8869f57ebd926e4237fb4379b317ac7aaa271a68c20ce99a5b054c283c7df&amp;mpshare=1&amp;scene=23&amp;srcid=0404byavRK4wQ0q01VcNxxQ5&amp;sharer_sharetime=1617496800125&amp;sharer_shareid=f18a0e6ff07a610f239caab878f64be5#rd">https://mp.weixin.qq.com/s?__biz=Mzg5NjU3NzE3OQ==&amp;mid=2247484986&amp;idx=1&amp;sn=55c43e01fb9cce6962272045c263fd83&amp;chksm=c07fbdcef70834d8869f57ebd926e4237fb4379b317ac7aaa271a68c20ce99a5b054c283c7df&amp;mpshare=1&amp;scene=23&amp;srcid=0404byavRK4wQ0q01VcNxxQ5&amp;sharer_sharetime=1617496800125&amp;sharer_shareid=f18a0e6ff07a610f239caab878f64be5#rd</a></p>
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script >
+var gitalk = new Gitalk({
+  clientID: 'a5bfaa7fddf1c19628f6',
+  clientSecret: '6a1973c92b65bf565b673300ed94c1d07b827727',
+  repo: 'renzhonglin.github.io',
+  owner: 'renzhonglin',
+  admin: 'renzhonglin',
+  id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+  distractionFreeMode: false  // Facebook-like distraction free mode
+})
+gitalk.render('gitalk-container')
+</script>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bo.vuvhz.top/2021/04/04/%E6%99%BA%E6%85%A7%E6%95%99%E8%82%B2%E8%B6%8A%E6%9D%83/" data-id="ckn2m1hhd00009gcp6nt20loa" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-通达OA" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/03/23/%E9%80%9A%E8%BE%BEOA/" class="article-date">
@@ -734,65 +816,6 @@ gitalk.render('gitalk-container')
 
 
   
-    <article id="post-foha" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/01/30/foha/" class="article-date">
-  <time datetime="2021-01-30T09:05:49.000Z" itemprop="datePublished">2021-01-30</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/30/foha/">foha批量查询脚本</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#分享一下fofa的批量查询脚本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><code class="hljs plain">#!&#x2F;usr&#x2F;bin&#x2F;python3<br># -*- coding: utf-8 -*-<br># Author  : 诚默<br><br>import base64<br>import json<br>import time<br>import pandas as pd<br>import requests<br>fofa_mail &#x3D; &#39;&#39;#通过fofa个人资料中获取<br>fofa_key &#x3D; &#39;&#39;#<br>fofa_list &#x3D; [&#39;title&#39;, &#39;header&#39;, &#39;body&#39;, &#39;domain&#39;, &#39;icon_hash&#39;, &#39;host&#39;, &#39;port&#39;, &#39;ip&#39;, &#39;status_code&#39;, &#39;protocol&#39;, &#39;city&#39;,<br>             &#39;region&#39;, &#39;country&#39;, &#39;cert&#39;, &#39;banner&#39;, &#39;typ&#39;, &#39;os&#39;, &#39;server&#39;, &#39;app&#39;, &#39;after&#39;, &#39;asn&#39;, &#39;org&#39;,<br>             &#39;base_protocol&#39;,<br>             &#39;is_ipv6&#39;, &#39;is_domain&#39;, &#39;ip_ports&#39;, &#39;port_size&#39;, &#39;port_size_gt&#39;, &#39;port_size_lt&#39;, &#39;ip_country&#39;, &#39;ip_region&#39;,<br>             &#39;ip_city&#39;, &#39;ip_after&#39;, &#39;ip_before&#39;<br>             ]<br><br>def fofaapi(select):  # 进行调用<br>    page &#x3D; 1  # 爬取几页数据，size为每页个数<br>    size &#x3D; 10  # 高级会员最大爬取前10000个<br>    fields &#x3D; &quot;host,ip,port,title,country_name&quot;  # 返回的数据列<br>    full &#x3D; &#39;false&#39;  # 显示所有的数据，false显示当年的<br>    base64_str &#x3D; base64.b64encode(select.encode(&quot;utf-8&quot;)).decode(&#39;utf-8&#39;)<br>    api_url &#x3D; &#39;https:&#x2F;&#x2F;fofa.so&#x2F;api&#x2F;v1&#x2F;search&#x2F;all?email&#x3D;&#39; + fofa_mail + &#39;&amp;key&#x3D;&#39; + fofa_key + &#39;&amp;qbase64&#x3D;&#39; + base64_str + &#39;&amp;fields&#x3D;&#39; + fields + &#39;&amp;size&#x3D;&#39; + str(<br>        size) + &#39;&amp;page&#x3D;&#39; + str(page) + &#39;&amp;full&#x3D;&#39; + full<br>    r &#x3D; requests.get(api_url)  # 提交请求<br>    text &#x3D; json.loads(r.text.encode(&#39;gbk&#39;, &#39;ignore&#39;).decode(&#39;gbk&#39;))  # 获得dict数据<br>    print(text)<br><br>    # 后续为写入表<br>    columns &#x3D; fields.split(&#39;,&#39;)  # 数据列名<br>    excel_list &#x3D; text[&#39;results&#39;]<br>    excel_list.insert(0, [&quot;查询语句：&quot; + str(select) + &quot; 页数：&quot; + str(page) + &quot; 每页：&quot; + str(size)])  # 写入初始的查询语句<br>    dt &#x3D; pd.DataFrame(excel_list, columns&#x3D;columns)<br>    file &#x3D; &#39;fofa&#39; + time.strftime(&#39;%Y%m%d%H%M%S&#39;, time.localtime(time.time()))  # 文件名为fofa+时间<br>    dt.to_excel(file + &quot;.xlsx&quot;, index&#x3D;1, engine&#x3D;&#39;xlsxwriter&#39;)<br>    #return text<br><br>def getselect(str):#格式化<br>    select &#x3D; &quot;&quot;<br>    comma_list &#x3D; str.split(&#39;,&#39;)  # 以逗号分组 （ip&#x3D;1.1.1.1 | domain&#x3D;baidu.com）<br>    for item in comma_list:<br>        equal_list &#x3D; item.split(&#39;&#x3D;&#39;)  # 等号分组 ip | 1.1.1.1<br>        if equal_list[0] in fofa_list:  # 属性存在，等号合规<br>            select +&#x3D; item + &quot; &amp;&amp; &quot;<br>        else:<br>            return False<br>    return select.rstrip(&#39; &amp;&amp; &#39;)  # 去除多余符号<br><br>def main():<br>    str &#x3D; &quot;domain&#x3D;baidu.com&quot;<br>    str1 &#x3D; &quot;ip&#x3D;61.135.186.217,domain&#x3D;baidu.com&quot;<br><br>    if getselect(str1) !&#x3D; False:  # 进行数据处理，数据合规就进行下一步操作<br>        fofaapi(getselect(str1))<br><br>if __name__ &#x3D;&#x3D; &#39;__main__&#39;:<br>    main()<br></code></pre></td></tr></table></figure>
-
-<p>文件结果如下，可根据需求改动</p>
-<p><img src="https://secquan.zzyuncheng.com/0af6daa12bfe973d7c6d797eadc02bb3.png-quanzi" alt="enter image description here"></p>
-<div id="gitalk-container"></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script src="https://priesttomb.github.io/js/md5.min.js"></script>
-<script >
-var gitalk = new Gitalk({
-  clientID: 'a5bfaa7fddf1c19628f6',
-  clientSecret: '6a1973c92b65bf565b673300ed94c1d07b827727',
-  repo: 'renzhonglin.github.io',
-  owner: 'renzhonglin',
-  admin: 'renzhonglin',
-  id: md5(location.pathname),      // Ensure uniqueness and length less than 50
-  distractionFreeMode: false  // Facebook-like distraction free mode
-})
-gitalk.render('gitalk-container')
-</script>
-
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bo.vuvhz.top/2021/01/30/foha/" data-id="ckmogaiiv0009aacp8d8ycykq" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -816,7 +839,7 @@ gitalk.render('gitalk-container')
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a></li></ul>
     </div>
   </div>
 
@@ -827,6 +850,10 @@ gitalk.render('gitalk-container')
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2021/04/04/%E6%99%BA%E6%85%A7%E6%95%99%E8%82%B2%E8%B6%8A%E6%9D%83/">智慧教育越权</a>
+          </li>
         
           <li>
             <a href="/2021/03/23/%E9%80%9A%E8%BE%BEOA/">通达OA_v11.7文件上传</a>
@@ -842,10 +869,6 @@ gitalk.render('gitalk-container')
         
           <li>
             <a href="/2021/03/09/phpstudy%E5%90%8E%E9%97%A8/">phpstudy后门</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/09/%E9%94%90%E6%8D%B7RG-UAC/">锐捷RG-UAC</a>
           </li>
         
       </ul>
